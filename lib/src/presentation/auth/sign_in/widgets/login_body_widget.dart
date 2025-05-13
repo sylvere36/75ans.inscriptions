@@ -68,6 +68,7 @@ class _LoginBodyWidgetState extends State<LoginBodyWidget> {
                       context: context,
                     ),
                     style: TextStyle(
+                      color: Colors.black,
                       fontSize: AppSize.getSize(
                         context: context,
                         mobileValue: 14,

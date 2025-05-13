@@ -76,7 +76,7 @@ class UserSession {
     preferences = preferences ?? await SharedPreferences.getInstance();
     String? vicariatStore = preferences?.getString(madebVicariat);
     if (vicariatStore == null) return null;
-    Vicariat vicariat = Vicariat.fromJson(vicariatStore);
+    Vicariat vicariat = Vicariat.fromJson(jsonDecode(vicariatStore));
     return vicariat;
   }
 

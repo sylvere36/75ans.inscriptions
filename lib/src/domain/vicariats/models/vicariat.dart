@@ -4,7 +4,7 @@ class Vicariat {
   int? authCode;
   String? identificationCode;
   String? vicariat;
-  List<Paroiss>? paroisses;
+  List<Paroisse>? paroisses;
 
   Vicariat({
     this.authCode,
@@ -17,7 +17,7 @@ class Vicariat {
     int? authCode,
     String? identificationCode,
     String? vicariat,
-    List<Paroiss>? paroisses,
+    List<Paroisse>? paroisses,
   }) => Vicariat(
     authCode: authCode ?? this.authCode,
     identificationCode: identificationCode ?? this.identificationCode,
@@ -36,8 +36,8 @@ class Vicariat {
     paroisses:
         json["paroisses"] == null
             ? []
-            : List<Paroiss>.from(
-              json["paroisses"]!.map((x) => Paroiss.fromMap(x)),
+            : List<Paroisse>.from(
+              json["paroisses"]!.map((x) => Paroisse.fromMap(x)),
             ),
   );
 
@@ -52,19 +52,19 @@ class Vicariat {
   };
 }
 
-class Paroiss {
+class Paroisse {
   String? name;
 
-  Paroiss({this.name});
+  Paroisse({this.name});
 
-  Paroiss copyWith({String? name}) => Paroiss(name: name ?? this.name);
+  Paroisse copyWith({String? name}) => Paroisse(name: name ?? this.name);
 
-  factory Paroiss.fromJson(String str) => Paroiss.fromMap(json.decode(str));
+  factory Paroisse.fromJson(String str) => Paroisse.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory Paroiss.fromMap(Map<String, dynamic> json) =>
-      Paroiss(name: json["name"]);
+  factory Paroisse.fromMap(Map<String, dynamic> json) =>
+      Paroisse(name: json["name"]);
 
   Map<String, dynamic> toMap() => {"name": name};
 }
