@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$AuthResponseDto {
 
-@JsonKey(name: 'user') UserDto? get user;@JsonKey(name: 'token') String? get token;
+ UserDto? get user; String? get token;
 /// Create a copy of AuthResponseDto
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -49,7 +49,7 @@ abstract mixin class $AuthResponseDtoCopyWith<$Res>  {
   factory $AuthResponseDtoCopyWith(AuthResponseDto value, $Res Function(AuthResponseDto) _then) = _$AuthResponseDtoCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: 'user') UserDto? user,@JsonKey(name: 'token') String? token
+ UserDto? user, String? token
 });
 
 
@@ -93,11 +93,11 @@ $UserDtoCopyWith<$Res>? get user {
 @JsonSerializable()
 
 class _AuthResponseDto implements AuthResponseDto {
-   _AuthResponseDto({@JsonKey(name: 'user') required this.user, @JsonKey(name: 'token') required this.token});
+   _AuthResponseDto({required this.user, required this.token});
   factory _AuthResponseDto.fromJson(Map<String, dynamic> json) => _$AuthResponseDtoFromJson(json);
 
-@override@JsonKey(name: 'user') final  UserDto? user;
-@override@JsonKey(name: 'token') final  String? token;
+@override final  UserDto? user;
+@override final  String? token;
 
 /// Create a copy of AuthResponseDto
 /// with the given fields replaced by the non-null parameter values.
@@ -132,7 +132,7 @@ abstract mixin class _$AuthResponseDtoCopyWith<$Res> implements $AuthResponseDto
   factory _$AuthResponseDtoCopyWith(_AuthResponseDto value, $Res Function(_AuthResponseDto) _then) = __$AuthResponseDtoCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: 'user') UserDto? user,@JsonKey(name: 'token') String? token
+ UserDto? user, String? token
 });
 
 

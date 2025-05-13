@@ -1,4 +1,4 @@
-import 'package:baseapp/src/domain/_commons/value_object.dart';
+import 'package:madeb75/src/domain/_commons/value_object.dart';
 import 'package:dartz/dartz.dart';
 
 import 'failures.dart';

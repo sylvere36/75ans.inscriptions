@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$UserDto {
 
- String? get id;@JsonKey(name: 'first_name') String? get firstName;@JsonKey(name: 'last_name') String? get lastName; String? get email; String? get phone;
+ String? get id; String? get firstName; String? get lastName; String? get email; String? get phone;
 /// Create a copy of UserDto
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -49,7 +49,7 @@ abstract mixin class $UserDtoCopyWith<$Res>  {
   factory $UserDtoCopyWith(UserDto value, $Res Function(UserDto) _then) = _$UserDtoCopyWithImpl;
 @useResult
 $Res call({
- String? id,@JsonKey(name: 'first_name') String? firstName,@JsonKey(name: 'last_name') String? lastName, String? email, String? phone
+ String? id, String? firstName, String? lastName, String? email, String? phone
 });
 
 
@@ -84,12 +84,12 @@ as String?,
 @JsonSerializable()
 
 class _UserDto implements UserDto {
-   _UserDto({required this.id, @JsonKey(name: 'first_name') this.firstName, @JsonKey(name: 'last_name') this.lastName, required this.email, this.phone});
+   _UserDto({required this.id, this.firstName, this.lastName, required this.email, this.phone});
   factory _UserDto.fromJson(Map<String, dynamic> json) => _$UserDtoFromJson(json);
 
 @override final  String? id;
-@override@JsonKey(name: 'first_name') final  String? firstName;
-@override@JsonKey(name: 'last_name') final  String? lastName;
+@override final  String? firstName;
+@override final  String? lastName;
 @override final  String? email;
 @override final  String? phone;
 
@@ -126,7 +126,7 @@ abstract mixin class _$UserDtoCopyWith<$Res> implements $UserDtoCopyWith<$Res> {
   factory _$UserDtoCopyWith(_UserDto value, $Res Function(_UserDto) _then) = __$UserDtoCopyWithImpl;
 @override @useResult
 $Res call({
- String? id,@JsonKey(name: 'first_name') String? firstName,@JsonKey(name: 'last_name') String? lastName, String? email, String? phone
+ String? id, String? firstName, String? lastName, String? email, String? phone
 });
 
 

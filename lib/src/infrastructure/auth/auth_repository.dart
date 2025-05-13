@@ -1,12 +1,12 @@
-import 'package:baseapp/src/domain/auth/_commons/i_auth_repository.dart';
-import 'package:baseapp/src/domain/auth/value_objects/password.dart';
-import 'package:baseapp/src/domain/auth/value_objects/email_address.dart';
-import 'package:baseapp/src/domain/auth/failure/auth_failure.dart';
-import 'package:baseapp/src/infrastructure/_commons/exceptions.dart';
-import 'package:baseapp/src/infrastructure/_commons/network/network_info.dart';
-import 'package:baseapp/src/infrastructure/auth/data_sources/auth_local_data_source.dart';
-import 'package:baseapp/src/infrastructure/auth/data_sources/auth_remote_data_source.dart';
-import 'package:baseapp/src/infrastructure/auth/dtos/auth_response/auth_response_dto.dart';
+import 'package:madeb75/src/domain/auth/_commons/i_auth_repository.dart';
+import 'package:madeb75/src/domain/auth/value_objects/password.dart';
+import 'package:madeb75/src/domain/auth/value_objects/email_address.dart';
+import 'package:madeb75/src/domain/auth/failure/auth_failure.dart';
+import 'package:madeb75/src/infrastructure/_commons/exceptions.dart';
+import 'package:madeb75/src/infrastructure/_commons/network/network_info.dart';
+import 'package:madeb75/src/infrastructure/auth/data_sources/auth_local_data_source.dart';
+import 'package:madeb75/src/infrastructure/auth/data_sources/auth_remote_data_source.dart';
+import 'package:madeb75/src/infrastructure/auth/dtos/auth_response/auth_response_dto.dart';
 import 'package:dartz/dartz.dart';
 
 class AuthRepository implements IAuthRepository {

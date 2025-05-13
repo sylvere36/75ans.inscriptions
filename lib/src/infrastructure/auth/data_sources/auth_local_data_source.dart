@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import 'package:baseapp/src/domain/auth/_commons/user/user.dart';
-import 'package:baseapp/src/infrastructure/_commons/network/user_session.dart';
-import 'package:baseapp/src/infrastructure/auth/dtos/auth_response/auth_response_dto.dart';
-import 'package:baseapp/src/infrastructure/auth/dtos/user/user_dto.dart';
+import 'package:madeb75/src/domain/auth/_commons/user/user.dart';
+import 'package:madeb75/src/infrastructure/_commons/network/user_session.dart';
+import 'package:madeb75/src/infrastructure/auth/dtos/auth_response/auth_response_dto.dart';
+import 'package:madeb75/src/infrastructure/auth/dtos/user/user_dto.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class IAuthLocalDataSource {

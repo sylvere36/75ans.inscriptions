@@ -1,15 +1,13 @@
-import 'package:baseapp/src/application/auth/login/login_bloc.dart';
-import 'package:baseapp/src/application/auth/register/register_bloc.dart';
-import 'package:baseapp/src/application/auth/resetPassword/resetpassword_bloc.dart';
-import 'package:baseapp/src/application/connected/connected_bloc.dart';
-import 'package:baseapp/src/application/splash/splash_bloc.dart';
-import 'package:baseapp/src/domain/auth/_commons/i_auth_repository.dart';
-import 'package:baseapp/src/infrastructure/_commons/network/app_requests.dart';
-import 'package:baseapp/src/infrastructure/_commons/network/network_info.dart';
-import 'package:baseapp/src/infrastructure/_commons/network/user_session.dart';
-import 'package:baseapp/src/infrastructure/auth/auth_repository.dart';
-import 'package:baseapp/src/infrastructure/auth/data_sources/auth_local_data_source.dart';
-import 'package:baseapp/src/infrastructure/auth/data_sources/auth_remote_data_source.dart';
+import 'package:madeb75/src/application/auth/login/login_bloc.dart';
+import 'package:madeb75/src/application/connected/connected_bloc.dart';
+import 'package:madeb75/src/application/splash/splash_bloc.dart';
+import 'package:madeb75/src/domain/auth/_commons/i_auth_repository.dart';
+import 'package:madeb75/src/infrastructure/_commons/network/app_requests.dart';
+import 'package:madeb75/src/infrastructure/_commons/network/network_info.dart';
+import 'package:madeb75/src/infrastructure/_commons/network/user_session.dart';
+import 'package:madeb75/src/infrastructure/auth/auth_repository.dart';
+import 'package:madeb75/src/infrastructure/auth/data_sources/auth_local_data_source.dart';
+import 'package:madeb75/src/infrastructure/auth/data_sources/auth_remote_data_source.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -52,9 +50,7 @@ void initAuth() async {
       remoteDataSource: sl(),
     ),
   );
-  sl.registerFactory(() => LoginBloc(repository: sl()));
-  sl.registerFactory(() => RegisterBloc(repository: sl()));
-  sl.registerFactory(() => ResetpasswordBloc(repository: sl()));
+  sl.registerFactory(() => LoginBloc(repository: sl(), userSession: sl()));
 }
 
 void initConnected() async {

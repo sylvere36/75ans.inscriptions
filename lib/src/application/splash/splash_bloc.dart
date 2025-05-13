@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:baseapp/src/infrastructure/_commons/network/user_session.dart';
-import 'package:baseapp/src/presentation/_commons/route/app_router.gr.dart';
+import 'package:madeb75/src/infrastructure/_commons/network/user_session.dart';
+import 'package:madeb75/src/presentation/_commons/route/app_router.gr.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 

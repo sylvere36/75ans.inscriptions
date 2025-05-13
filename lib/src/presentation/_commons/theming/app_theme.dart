@@ -1,11 +1,11 @@
-import 'package:baseapp/src/presentation/_commons/theming/app_color.dart';
-import 'package:baseapp/src/presentation/_commons/theming/app_material_color.dart';
+import 'package:madeb75/src/presentation/_commons/theming/app_color.dart';
+import 'package:madeb75/src/presentation/_commons/theming/app_material_color.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 ThemeData buildAppThemeData(BuildContext context) {
   return ThemeData(
-    textTheme: GoogleFonts.robotoTextTheme(
+    textTheme: GoogleFonts.urbanistTextTheme(
       Theme.of(context).textTheme.copyWith(
         displayMedium: const TextStyle(
           fontSize: 24,

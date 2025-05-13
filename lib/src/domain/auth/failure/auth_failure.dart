@@ -1,4 +1,4 @@
-import 'package:baseapp/src/domain/_commons/failures.dart';
+import 'package:madeb75/src/domain/_commons/failures.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'auth_failure.freezed.dart';

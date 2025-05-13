@@ -1,5 +1,5 @@
-import 'package:baseapp/src/infrastructure/_commons/network/interceptors/request_headers_interceptor.dart';
-import 'package:baseapp/src/infrastructure/_commons/network/request_url.dart';
+import 'package:madeb75/src/infrastructure/_commons/network/interceptors/request_headers_interceptor.dart';
+import 'package:madeb75/src/infrastructure/_commons/network/request_url.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';

@@ -1,4 +1,4 @@
-import 'package:baseapp/src/infrastructure/_commons/network/env_config.dart';
+import 'package:madeb75/src/infrastructure/_commons/network/env_config.dart';
 
 class RequestUrl {
   String baseUrl = EnvManager().getBaseUrl();

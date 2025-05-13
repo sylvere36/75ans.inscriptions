@@ -1,5 +1,5 @@
-import 'package:baseapp/src/domain/auth/value_objects/failures.dart';
-import 'package:baseapp/src/domain/auth/value_objects/password.dart';
+import 'package:madeb75/src/domain/auth/value_objects/failures.dart';
+import 'package:madeb75/src/domain/auth/value_objects/password.dart';
 
 String? handlePasswordError(Password password) {
   if (!password.isValid()) {

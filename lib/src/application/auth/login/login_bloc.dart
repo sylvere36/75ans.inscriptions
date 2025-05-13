@@ -1,8 +1,11 @@
-import 'package:baseapp/src/domain/auth/_commons/i_auth_repository.dart';
-import 'package:baseapp/src/domain/auth/failure/auth_failure.dart';
-import 'package:baseapp/src/domain/auth/value_objects/email_address.dart';
-import 'package:baseapp/src/domain/auth/value_objects/password.dart';
-import 'package:baseapp/src/infrastructure/_commons/network/env_config.dart';
+import 'dart:convert';
+
+import 'package:madeb75/gen/assets.gen.dart';
+import 'package:madeb75/src/domain/auth/_commons/i_auth_repository.dart';
+import 'package:madeb75/src/domain/auth/failure/auth_failure.dart';
+import 'package:madeb75/src/domain/vicariats/models/vicariat.dart';
+import 'package:madeb75/src/infrastructure/_commons/network/user_session.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -13,113 +16,62 @@ part 'login_bloc.freezed.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   IAuthRepository repository;
-  LoginBloc({required this.repository}) : super(LoginState.initial()) {
-    on<Click>(_click);
-    on<EmailChanged>(_emailChanged);
-    on<PasswordChanged>(_passwordChanged);
+  final UserSession userSession;
+  LoginBloc({required this.repository, required this.userSession})
+    : super(LoginState.initial()) {
+    on<LoadVicariats>(loadVicariats);
     on<Submit>(_submit);
   }
 
-  void _click(Click event, Emitter<LoginState> emit) {
-    emit(state.copyWith(clickType: event.buttonType));
-    emit(state.copyWith(clickType: ''));
-  }
+  void loadVicariats(LoadVicariats event, Emitter<LoginState> emit) async {
+    final String response = await rootBundle.loadString(Assets.json.vicariats);
+    final List<dynamic> data = jsonDecode(response);
 
-  void _emailChanged(EmailChanged event, Emitter<LoginState> emit) {
-    if (event.value.isEmpty) return;
-    String email = event.value;
-    EmailAddress emailAddress = EmailAddress(email);
+    List<Vicariat> vicariats =
+        data.map((item) => Vicariat.fromMap(item)).toList();
+
     emit(
       state.copyWith(
-        emailAddress: email,
-        emailIsError: !emailAddress.isValid(),
-        isSubmitable: emailAddress.isValid() && state.password.isNotEmpty,
-      ),
-    );
-  }
-
-  void _passwordChanged(PasswordChanged event, Emitter<LoginState> emit) {
-    if (event.value.isEmpty) return;
-    String password = event.value;
-    emit(
-      state.copyWith(
-        password: password,
-        isSubmitable: state.emailAddress.isNotEmpty && password.isNotEmpty,
+        vicariats: vicariats,
+        isSubmitable: true,
+        clickType: 'vicariat',
       ),
     );
   }
 
   void _submit(Submit event, Emitter<LoginState> emit) async {
-    if (state.emailAddress.isEmpty || state.password.isEmpty) {
+    if (event.vicariat.authCode.toString() != event.code) {
       emit(
         state.copyWith(
           showErrorMessages: true,
-          authFailureOrSuccessOption: some(
-            const Left(
-              AuthFailure.fieldError('MessagesStrings.allFieldRequired'),
-            ),
-          ),
+          errorMessage: 'Code vicariat incorrect',
         ),
       );
       emit(
         state.copyWith(
           showErrorMessages: false,
+          errorMessage: null,
           authFailureOrSuccessOption: none(),
         ),
       );
       return;
     }
-
-    _envManager(
-      email: state.emailAddress,
-      password: state.password,
-      emit: emit,
-    );
-
-    Either<AuthFailure, Unit> failedOrSuccessResponse;
-
-    emit(state.copyWith(isSubmitting: true));
-    failedOrSuccessResponse = await repository.signInWithEmailAndPassword(
-      emailAddress: EmailAddress(state.emailAddress),
-      password: Password(state.password),
-    );
-    failedOrSuccessResponse.fold(
-      (l) {
-        emit(
-          state.copyWith(
-            isSubmitting: false,
-            showErrorMessages: true,
-            authFailureOrSuccessOption: some(Left(l)),
-          ),
-        );
-        emit(
-          state.copyWith(
-            isSubmitting: false,
-            showErrorMessages: false,
-            authFailureOrSuccessOption: none(),
-          ),
-        );
-      },
-      (r) => emit(
-        state.copyWith(
-          isSubmitting: false,
-          showErrorMessages: false,
-          authFailureOrSuccessOption: some(const Right(unit)),
-        ),
+    await userSession.setVicariat(event.vicariat);
+    emit(
+      state.copyWith(
+        isSubmitting: false,
+        showErrorMessages: false,
+        isLoggedIn: true,
+        authFailureOrSuccessOption: some(const Right(unit)),
       ),
     );
-  }
-
-  Future<void> _envManager({
-    required String email,
-    required String password,
-    required Emitter<LoginState> emit,
-  }) async {
-    if (email == EnvManager.emailEnv) {
-      await EnvManager().setEnvironment(env: password, restart: true);
-      emit(state.copyWith(restartApp: true));
-      emit(state.copyWith(restartApp: null));
-      return;
-    }
+    emit(
+      state.copyWith(
+        isSubmitting: false,
+        showErrorMessages: false,
+        isLoggedIn: null,
+        authFailureOrSuccessOption: none(),
+      ),
+    );
   }
 }

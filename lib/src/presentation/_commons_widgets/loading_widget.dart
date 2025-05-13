@@ -1,11 +1,12 @@
-import 'package:baseapp/src/presentation/_commons/theming/app_color.dart';
+import 'package:madeb75/src/presentation/_commons/theming/app_color.dart';
 import 'package:flutter/material.dart';
 
 class LoadingWidget extends StatefulWidget {
   final double? height;
+  final double? width;
   final Color? color;
 
-  const LoadingWidget({super.key, this.height, this.color});
+  const LoadingWidget({super.key, this.height, this.width, this.color});
 
   @override
   State<LoadingWidget> createState() => _LoadingWidgetState();
@@ -24,6 +25,7 @@ class _LoadingWidgetState extends State<LoadingWidget>
       opacity: 0.7,
       child: SizedBox(
         height: widget.height ?? 70,
+        width: widget.width ?? 70,
         child: Center(
           child: CircularProgressIndicator(
             strokeWidth: 2.0,

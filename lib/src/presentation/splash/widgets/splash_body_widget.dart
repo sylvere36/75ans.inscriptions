@@ -1,5 +1,6 @@
-import 'package:baseapp/src/presentation/_commons/theming/app_color.dart';
-import 'package:baseapp/src/presentation/_commons_widgets/loading_widget.dart';
+import 'package:madeb75/gen/assets.gen.dart';
+import 'package:madeb75/src/presentation/_commons/theming/app_color.dart';
+import 'package:madeb75/src/presentation/_commons_widgets/loading_widget.dart';
 import 'package:flutter/material.dart';
 
 class SplashBodyWidget extends StatelessWidget {
@@ -7,14 +8,14 @@ class SplashBodyWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Stack(
+    return Stack(
       alignment: Alignment.center,
       fit: StackFit.expand,
       children: [
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            FlutterLogo(textColor: AppColors.primary, size: 150.0),
+            Image.asset(Assets.icons.icon.path, width: 200, height: 200),
             LoadingWidget(color: AppColors.primary),
           ],
         ),

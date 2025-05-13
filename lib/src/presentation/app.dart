@@ -1,8 +1,8 @@
-import 'package:baseapp/l10n/app_localizations.dart';
-import 'package:baseapp/src/application/connected/connected_bloc.dart';
-import 'package:baseapp/injection_container.dart';
-import 'package:baseapp/src/presentation/_commons/route/app_router.gr.dart';
-import 'package:baseapp/src/presentation/_commons/theming/app_theme.dart';
+import 'package:madeb75/l10n/app_localizations.dart';
+import 'package:madeb75/src/application/connected/connected_bloc.dart';
+import 'package:madeb75/injection_container.dart';
+import 'package:madeb75/src/presentation/_commons/route/app_router.gr.dart';
+import 'package:madeb75/src/presentation/_commons/theming/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -37,7 +37,7 @@ class _AppState extends State<App> {
         ],
         supportedLocales: const [Locale('en'), Locale('fr')],
         locale: const Locale('fr'),
-        title: 'Woura',
+        title: '75ans MADEB',
         builder:
             (context, router) => MultiBlocListener(
               listeners: [

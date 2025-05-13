@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:baseapp/src/application/connected/connected_bloc.dart';
-import 'package:baseapp/src/application/splash/splash_bloc.dart';
-import 'package:baseapp/injection_container.dart';
-import 'package:baseapp/src/presentation/splash/widgets/splash_body_widget.dart';
+import 'package:madeb75/src/application/connected/connected_bloc.dart';
+import 'package:madeb75/src/application/splash/splash_bloc.dart';
+import 'package:madeb75/injection_container.dart';
+import 'package:madeb75/src/presentation/splash/widgets/splash_body_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

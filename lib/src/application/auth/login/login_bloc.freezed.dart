@@ -77,206 +77,8 @@ String toString() {
 /// @nodoc
 
 
-class Click implements LoginEvent {
-  const Click(this.buttonType);
-  
-
- final  String buttonType;
-
-/// Create a copy of LoginEvent
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$ClickCopyWith<Click> get copyWith => _$ClickCopyWithImpl<Click>(this, _$identity);
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Click&&(identical(other.buttonType, buttonType) || other.buttonType == buttonType));
-}
-
-
-@override
-int get hashCode => Object.hash(runtimeType,buttonType);
-
-@override
-String toString() {
-  return 'LoginEvent.click(buttonType: $buttonType)';
-}
-
-
-}
-
-/// @nodoc
-abstract mixin class $ClickCopyWith<$Res> implements $LoginEventCopyWith<$Res> {
-  factory $ClickCopyWith(Click value, $Res Function(Click) _then) = _$ClickCopyWithImpl;
-@useResult
-$Res call({
- String buttonType
-});
-
-
-
-
-}
-/// @nodoc
-class _$ClickCopyWithImpl<$Res>
-    implements $ClickCopyWith<$Res> {
-  _$ClickCopyWithImpl(this._self, this._then);
-
-  final Click _self;
-  final $Res Function(Click) _then;
-
-/// Create a copy of LoginEvent
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? buttonType = null,}) {
-  return _then(Click(
-null == buttonType ? _self.buttonType : buttonType // ignore: cast_nullable_to_non_nullable
-as String,
-  ));
-}
-
-
-}
-
-/// @nodoc
-
-
-class EmailChanged implements LoginEvent {
-  const EmailChanged(this.value);
-  
-
- final  String value;
-
-/// Create a copy of LoginEvent
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$EmailChangedCopyWith<EmailChanged> get copyWith => _$EmailChangedCopyWithImpl<EmailChanged>(this, _$identity);
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is EmailChanged&&(identical(other.value, value) || other.value == value));
-}
-
-
-@override
-int get hashCode => Object.hash(runtimeType,value);
-
-@override
-String toString() {
-  return 'LoginEvent.emailChanged(value: $value)';
-}
-
-
-}
-
-/// @nodoc
-abstract mixin class $EmailChangedCopyWith<$Res> implements $LoginEventCopyWith<$Res> {
-  factory $EmailChangedCopyWith(EmailChanged value, $Res Function(EmailChanged) _then) = _$EmailChangedCopyWithImpl;
-@useResult
-$Res call({
- String value
-});
-
-
-
-
-}
-/// @nodoc
-class _$EmailChangedCopyWithImpl<$Res>
-    implements $EmailChangedCopyWith<$Res> {
-  _$EmailChangedCopyWithImpl(this._self, this._then);
-
-  final EmailChanged _self;
-  final $Res Function(EmailChanged) _then;
-
-/// Create a copy of LoginEvent
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? value = null,}) {
-  return _then(EmailChanged(
-null == value ? _self.value : value // ignore: cast_nullable_to_non_nullable
-as String,
-  ));
-}
-
-
-}
-
-/// @nodoc
-
-
-class PasswordChanged implements LoginEvent {
-  const PasswordChanged(this.value);
-  
-
- final  String value;
-
-/// Create a copy of LoginEvent
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$PasswordChangedCopyWith<PasswordChanged> get copyWith => _$PasswordChangedCopyWithImpl<PasswordChanged>(this, _$identity);
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PasswordChanged&&(identical(other.value, value) || other.value == value));
-}
-
-
-@override
-int get hashCode => Object.hash(runtimeType,value);
-
-@override
-String toString() {
-  return 'LoginEvent.passwordChanged(value: $value)';
-}
-
-
-}
-
-/// @nodoc
-abstract mixin class $PasswordChangedCopyWith<$Res> implements $LoginEventCopyWith<$Res> {
-  factory $PasswordChangedCopyWith(PasswordChanged value, $Res Function(PasswordChanged) _then) = _$PasswordChangedCopyWithImpl;
-@useResult
-$Res call({
- String value
-});
-
-
-
-
-}
-/// @nodoc
-class _$PasswordChangedCopyWithImpl<$Res>
-    implements $PasswordChangedCopyWith<$Res> {
-  _$PasswordChangedCopyWithImpl(this._self, this._then);
-
-  final PasswordChanged _self;
-  final $Res Function(PasswordChanged) _then;
-
-/// Create a copy of LoginEvent
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? value = null,}) {
-  return _then(PasswordChanged(
-null == value ? _self.value : value // ignore: cast_nullable_to_non_nullable
-as String,
-  ));
-}
-
-
-}
-
-/// @nodoc
-
-
-class Submit implements LoginEvent {
-  const Submit();
+class LoadVicariats implements LoginEvent {
+  const LoadVicariats();
   
 
 
@@ -286,7 +88,7 @@ class Submit implements LoginEvent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Submit);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LoadVicariats);
 }
 
 
@@ -295,7 +97,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'LoginEvent.submit()';
+  return 'LoginEvent.loadVicariats()';
 }
 
 
@@ -305,9 +107,77 @@ String toString() {
 
 
 /// @nodoc
+
+
+class Submit implements LoginEvent {
+  const Submit({required this.vicariat, required this.code});
+  
+
+ final  Vicariat vicariat;
+ final  String code;
+
+/// Create a copy of LoginEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$SubmitCopyWith<Submit> get copyWith => _$SubmitCopyWithImpl<Submit>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Submit&&(identical(other.vicariat, vicariat) || other.vicariat == vicariat)&&(identical(other.code, code) || other.code == code));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,vicariat,code);
+
+@override
+String toString() {
+  return 'LoginEvent.submit(vicariat: $vicariat, code: $code)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $SubmitCopyWith<$Res> implements $LoginEventCopyWith<$Res> {
+  factory $SubmitCopyWith(Submit value, $Res Function(Submit) _then) = _$SubmitCopyWithImpl;
+@useResult
+$Res call({
+ Vicariat vicariat, String code
+});
+
+
+
+
+}
+/// @nodoc
+class _$SubmitCopyWithImpl<$Res>
+    implements $SubmitCopyWith<$Res> {
+  _$SubmitCopyWithImpl(this._self, this._then);
+
+  final Submit _self;
+  final $Res Function(Submit) _then;
+
+/// Create a copy of LoginEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? vicariat = null,Object? code = null,}) {
+  return _then(Submit(
+vicariat: null == vicariat ? _self.vicariat : vicariat // ignore: cast_nullable_to_non_nullable
+as Vicariat,code: null == code ? _self.code : code // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
 mixin _$LoginState {
 
- String get emailAddress; String get password; bool get showErrorMessages; bool get isSubmitting; bool get isSubmitable; String get clickType; bool get emailIsError; bool get passwordIsError; bool? get restartApp; Option<Either<AuthFailure, Unit>> get authFailureOrSuccessOption;
+ bool get showErrorMessages; bool get isSubmitting; bool get isSubmitable; String get clickType; bool? get restartApp; List<Vicariat>? get vicariats; String? get errorMessage; bool? get isLoggedIn; Option<Either<AuthFailure, Unit>> get authFailureOrSuccessOption;
 /// Create a copy of LoginState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -318,16 +188,16 @@ $LoginStateCopyWith<LoginState> get copyWith => _$LoginStateCopyWithImpl<LoginSt
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is LoginState&&(identical(other.emailAddress, emailAddress) || other.emailAddress == emailAddress)&&(identical(other.password, password) || other.password == password)&&(identical(other.showErrorMessages, showErrorMessages) || other.showErrorMessages == showErrorMessages)&&(identical(other.isSubmitting, isSubmitting) || other.isSubmitting == isSubmitting)&&(identical(other.isSubmitable, isSubmitable) || other.isSubmitable == isSubmitable)&&(identical(other.clickType, clickType) || other.clickType == clickType)&&(identical(other.emailIsError, emailIsError) || other.emailIsError == emailIsError)&&(identical(other.passwordIsError, passwordIsError) || other.passwordIsError == passwordIsError)&&(identical(other.restartApp, restartApp) || other.restartApp == restartApp)&&(identical(other.authFailureOrSuccessOption, authFailureOrSuccessOption) || other.authFailureOrSuccessOption == authFailureOrSuccessOption));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LoginState&&(identical(other.showErrorMessages, showErrorMessages) || other.showErrorMessages == showErrorMessages)&&(identical(other.isSubmitting, isSubmitting) || other.isSubmitting == isSubmitting)&&(identical(other.isSubmitable, isSubmitable) || other.isSubmitable == isSubmitable)&&(identical(other.clickType, clickType) || other.clickType == clickType)&&(identical(other.restartApp, restartApp) || other.restartApp == restartApp)&&const DeepCollectionEquality().equals(other.vicariats, vicariats)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage)&&(identical(other.isLoggedIn, isLoggedIn) || other.isLoggedIn == isLoggedIn)&&(identical(other.authFailureOrSuccessOption, authFailureOrSuccessOption) || other.authFailureOrSuccessOption == authFailureOrSuccessOption));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,emailAddress,password,showErrorMessages,isSubmitting,isSubmitable,clickType,emailIsError,passwordIsError,restartApp,authFailureOrSuccessOption);
+int get hashCode => Object.hash(runtimeType,showErrorMessages,isSubmitting,isSubmitable,clickType,restartApp,const DeepCollectionEquality().hash(vicariats),errorMessage,isLoggedIn,authFailureOrSuccessOption);
 
 @override
 String toString() {
-  return 'LoginState(emailAddress: $emailAddress, password: $password, showErrorMessages: $showErrorMessages, isSubmitting: $isSubmitting, isSubmitable: $isSubmitable, clickType: $clickType, emailIsError: $emailIsError, passwordIsError: $passwordIsError, restartApp: $restartApp, authFailureOrSuccessOption: $authFailureOrSuccessOption)';
+  return 'LoginState(showErrorMessages: $showErrorMessages, isSubmitting: $isSubmitting, isSubmitable: $isSubmitable, clickType: $clickType, restartApp: $restartApp, vicariats: $vicariats, errorMessage: $errorMessage, isLoggedIn: $isLoggedIn, authFailureOrSuccessOption: $authFailureOrSuccessOption)';
 }
 
 
@@ -338,7 +208,7 @@ abstract mixin class $LoginStateCopyWith<$Res>  {
   factory $LoginStateCopyWith(LoginState value, $Res Function(LoginState) _then) = _$LoginStateCopyWithImpl;
 @useResult
 $Res call({
- String emailAddress, String password, bool showErrorMessages, bool isSubmitting, bool isSubmitable, String clickType, bool emailIsError, bool passwordIsError, bool? restartApp, Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption
+ bool showErrorMessages, bool isSubmitting, bool isSubmitable, String clickType, bool? restartApp, List<Vicariat>? vicariats, String? errorMessage, bool? isLoggedIn, Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption
 });
 
 
@@ -355,17 +225,16 @@ class _$LoginStateCopyWithImpl<$Res>
 
 /// Create a copy of LoginState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? emailAddress = null,Object? password = null,Object? showErrorMessages = null,Object? isSubmitting = null,Object? isSubmitable = null,Object? clickType = null,Object? emailIsError = null,Object? passwordIsError = null,Object? restartApp = freezed,Object? authFailureOrSuccessOption = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? showErrorMessages = null,Object? isSubmitting = null,Object? isSubmitable = null,Object? clickType = null,Object? restartApp = freezed,Object? vicariats = freezed,Object? errorMessage = freezed,Object? isLoggedIn = freezed,Object? authFailureOrSuccessOption = null,}) {
   return _then(_self.copyWith(
-emailAddress: null == emailAddress ? _self.emailAddress : emailAddress // ignore: cast_nullable_to_non_nullable
-as String,password: null == password ? _self.password : password // ignore: cast_nullable_to_non_nullable
-as String,showErrorMessages: null == showErrorMessages ? _self.showErrorMessages : showErrorMessages // ignore: cast_nullable_to_non_nullable
+showErrorMessages: null == showErrorMessages ? _self.showErrorMessages : showErrorMessages // ignore: cast_nullable_to_non_nullable
 as bool,isSubmitting: null == isSubmitting ? _self.isSubmitting : isSubmitting // ignore: cast_nullable_to_non_nullable
 as bool,isSubmitable: null == isSubmitable ? _self.isSubmitable : isSubmitable // ignore: cast_nullable_to_non_nullable
 as bool,clickType: null == clickType ? _self.clickType : clickType // ignore: cast_nullable_to_non_nullable
-as String,emailIsError: null == emailIsError ? _self.emailIsError : emailIsError // ignore: cast_nullable_to_non_nullable
-as bool,passwordIsError: null == passwordIsError ? _self.passwordIsError : passwordIsError // ignore: cast_nullable_to_non_nullable
-as bool,restartApp: freezed == restartApp ? _self.restartApp : restartApp // ignore: cast_nullable_to_non_nullable
+as String,restartApp: freezed == restartApp ? _self.restartApp : restartApp // ignore: cast_nullable_to_non_nullable
+as bool?,vicariats: freezed == vicariats ? _self.vicariats : vicariats // ignore: cast_nullable_to_non_nullable
+as List<Vicariat>?,errorMessage: freezed == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
+as String?,isLoggedIn: freezed == isLoggedIn ? _self.isLoggedIn : isLoggedIn // ignore: cast_nullable_to_non_nullable
 as bool?,authFailureOrSuccessOption: null == authFailureOrSuccessOption ? _self.authFailureOrSuccessOption : authFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
 as Option<Either<AuthFailure, Unit>>,
   ));
@@ -378,18 +247,25 @@ as Option<Either<AuthFailure, Unit>>,
 
 
 class _LoginState implements LoginState {
-  const _LoginState({required this.emailAddress, required this.password, required this.showErrorMessages, required this.isSubmitting, required this.isSubmitable, required this.clickType, required this.emailIsError, required this.passwordIsError, required this.restartApp, required this.authFailureOrSuccessOption});
+  const _LoginState({required this.showErrorMessages, required this.isSubmitting, required this.isSubmitable, required this.clickType, required this.restartApp, final  List<Vicariat>? vicariats, this.errorMessage, this.isLoggedIn, required this.authFailureOrSuccessOption}): _vicariats = vicariats;
   
 
-@override final  String emailAddress;
-@override final  String password;
 @override final  bool showErrorMessages;
 @override final  bool isSubmitting;
 @override final  bool isSubmitable;
 @override final  String clickType;
-@override final  bool emailIsError;
-@override final  bool passwordIsError;
 @override final  bool? restartApp;
+ final  List<Vicariat>? _vicariats;
+@override List<Vicariat>? get vicariats {
+  final value = _vicariats;
+  if (value == null) return null;
+  if (_vicariats is EqualUnmodifiableListView) return _vicariats;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(value);
+}
+
+@override final  String? errorMessage;
+@override final  bool? isLoggedIn;
 @override final  Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption;
 
 /// Create a copy of LoginState
@@ -402,16 +278,16 @@ _$LoginStateCopyWith<_LoginState> get copyWith => __$LoginStateCopyWithImpl<_Log
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _LoginState&&(identical(other.emailAddress, emailAddress) || other.emailAddress == emailAddress)&&(identical(other.password, password) || other.password == password)&&(identical(other.showErrorMessages, showErrorMessages) || other.showErrorMessages == showErrorMessages)&&(identical(other.isSubmitting, isSubmitting) || other.isSubmitting == isSubmitting)&&(identical(other.isSubmitable, isSubmitable) || other.isSubmitable == isSubmitable)&&(identical(other.clickType, clickType) || other.clickType == clickType)&&(identical(other.emailIsError, emailIsError) || other.emailIsError == emailIsError)&&(identical(other.passwordIsError, passwordIsError) || other.passwordIsError == passwordIsError)&&(identical(other.restartApp, restartApp) || other.restartApp == restartApp)&&(identical(other.authFailureOrSuccessOption, authFailureOrSuccessOption) || other.authFailureOrSuccessOption == authFailureOrSuccessOption));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _LoginState&&(identical(other.showErrorMessages, showErrorMessages) || other.showErrorMessages == showErrorMessages)&&(identical(other.isSubmitting, isSubmitting) || other.isSubmitting == isSubmitting)&&(identical(other.isSubmitable, isSubmitable) || other.isSubmitable == isSubmitable)&&(identical(other.clickType, clickType) || other.clickType == clickType)&&(identical(other.restartApp, restartApp) || other.restartApp == restartApp)&&const DeepCollectionEquality().equals(other._vicariats, _vicariats)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage)&&(identical(other.isLoggedIn, isLoggedIn) || other.isLoggedIn == isLoggedIn)&&(identical(other.authFailureOrSuccessOption, authFailureOrSuccessOption) || other.authFailureOrSuccessOption == authFailureOrSuccessOption));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,emailAddress,password,showErrorMessages,isSubmitting,isSubmitable,clickType,emailIsError,passwordIsError,restartApp,authFailureOrSuccessOption);
+int get hashCode => Object.hash(runtimeType,showErrorMessages,isSubmitting,isSubmitable,clickType,restartApp,const DeepCollectionEquality().hash(_vicariats),errorMessage,isLoggedIn,authFailureOrSuccessOption);
 
 @override
 String toString() {
-  return 'LoginState(emailAddress: $emailAddress, password: $password, showErrorMessages: $showErrorMessages, isSubmitting: $isSubmitting, isSubmitable: $isSubmitable, clickType: $clickType, emailIsError: $emailIsError, passwordIsError: $passwordIsError, restartApp: $restartApp, authFailureOrSuccessOption: $authFailureOrSuccessOption)';
+  return 'LoginState(showErrorMessages: $showErrorMessages, isSubmitting: $isSubmitting, isSubmitable: $isSubmitable, clickType: $clickType, restartApp: $restartApp, vicariats: $vicariats, errorMessage: $errorMessage, isLoggedIn: $isLoggedIn, authFailureOrSuccessOption: $authFailureOrSuccessOption)';
 }
 
 
@@ -422,7 +298,7 @@ abstract mixin class _$LoginStateCopyWith<$Res> implements $LoginStateCopyWith<$
   factory _$LoginStateCopyWith(_LoginState value, $Res Function(_LoginState) _then) = __$LoginStateCopyWithImpl;
 @override @useResult
 $Res call({
- String emailAddress, String password, bool showErrorMessages, bool isSubmitting, bool isSubmitable, String clickType, bool emailIsError, bool passwordIsError, bool? restartApp, Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption
+ bool showErrorMessages, bool isSubmitting, bool isSubmitable, String clickType, bool? restartApp, List<Vicariat>? vicariats, String? errorMessage, bool? isLoggedIn, Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption
 });
 
 
@@ -439,17 +315,16 @@ class __$LoginStateCopyWithImpl<$Res>
 
 /// Create a copy of LoginState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? emailAddress = null,Object? password = null,Object? showErrorMessages = null,Object? isSubmitting = null,Object? isSubmitable = null,Object? clickType = null,Object? emailIsError = null,Object? passwordIsError = null,Object? restartApp = freezed,Object? authFailureOrSuccessOption = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? showErrorMessages = null,Object? isSubmitting = null,Object? isSubmitable = null,Object? clickType = null,Object? restartApp = freezed,Object? vicariats = freezed,Object? errorMessage = freezed,Object? isLoggedIn = freezed,Object? authFailureOrSuccessOption = null,}) {
   return _then(_LoginState(
-emailAddress: null == emailAddress ? _self.emailAddress : emailAddress // ignore: cast_nullable_to_non_nullable
-as String,password: null == password ? _self.password : password // ignore: cast_nullable_to_non_nullable
-as String,showErrorMessages: null == showErrorMessages ? _self.showErrorMessages : showErrorMessages // ignore: cast_nullable_to_non_nullable
+showErrorMessages: null == showErrorMessages ? _self.showErrorMessages : showErrorMessages // ignore: cast_nullable_to_non_nullable
 as bool,isSubmitting: null == isSubmitting ? _self.isSubmitting : isSubmitting // ignore: cast_nullable_to_non_nullable
 as bool,isSubmitable: null == isSubmitable ? _self.isSubmitable : isSubmitable // ignore: cast_nullable_to_non_nullable
 as bool,clickType: null == clickType ? _self.clickType : clickType // ignore: cast_nullable_to_non_nullable
-as String,emailIsError: null == emailIsError ? _self.emailIsError : emailIsError // ignore: cast_nullable_to_non_nullable
-as bool,passwordIsError: null == passwordIsError ? _self.passwordIsError : passwordIsError // ignore: cast_nullable_to_non_nullable
-as bool,restartApp: freezed == restartApp ? _self.restartApp : restartApp // ignore: cast_nullable_to_non_nullable
+as String,restartApp: freezed == restartApp ? _self.restartApp : restartApp // ignore: cast_nullable_to_non_nullable
+as bool?,vicariats: freezed == vicariats ? _self._vicariats : vicariats // ignore: cast_nullable_to_non_nullable
+as List<Vicariat>?,errorMessage: freezed == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
+as String?,isLoggedIn: freezed == isLoggedIn ? _self.isLoggedIn : isLoggedIn // ignore: cast_nullable_to_non_nullable
 as bool?,authFailureOrSuccessOption: null == authFailureOrSuccessOption ? _self.authFailureOrSuccessOption : authFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
 as Option<Either<AuthFailure, Unit>>,
   ));

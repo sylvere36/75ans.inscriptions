@@ -1,5 +1,5 @@
-import 'package:baseapp/src/domain/auth/_commons/auth_response/auth_response.dart';
-import 'package:baseapp/src/infrastructure/auth/dtos/user/user_dto.dart';
+import 'package:madeb75/src/domain/auth/_commons/auth_response/auth_response.dart';
+import 'package:madeb75/src/infrastructure/auth/dtos/user/user_dto.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'auth_response_dto.freezed.dart';
 

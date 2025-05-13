@@ -1,5 +1,5 @@
-import 'package:baseapp/src/infrastructure/_commons/network/env_config.dart';
-import 'package:baseapp/src/presentation/app.dart';
+import 'package:madeb75/src/infrastructure/_commons/network/env_config.dart';
+import 'package:madeb75/src/presentation/app.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

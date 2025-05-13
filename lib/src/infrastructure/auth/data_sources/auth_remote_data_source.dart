@@ -1,11 +1,11 @@
 import 'dart:convert';
 
-import 'package:baseapp/src/infrastructure/_commons/exceptions.dart';
-import 'package:baseapp/src/infrastructure/_commons/network/app_http_service.dart';
-import 'package:baseapp/src/infrastructure/_commons/network/app_requests.dart';
-import 'package:baseapp/src/infrastructure/_commons/throw_error.dart';
-import 'package:baseapp/src/infrastructure/auth/dtos/auth_response/auth_response_dto.dart';
-import 'package:baseapp/src/infrastructure/auth/dtos/user/user_dto.dart';
+import 'package:madeb75/src/infrastructure/_commons/exceptions.dart';
+import 'package:madeb75/src/infrastructure/_commons/network/app_http_service.dart';
+import 'package:madeb75/src/infrastructure/_commons/network/app_requests.dart';
+import 'package:madeb75/src/infrastructure/_commons/throw_error.dart';
+import 'package:madeb75/src/infrastructure/auth/dtos/auth_response/auth_response_dto.dart';
+import 'package:madeb75/src/infrastructure/auth/dtos/user/user_dto.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 

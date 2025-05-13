@@ -1,4 +1,4 @@
-import 'package:baseapp/src/domain/auth/_commons/user/user.dart';
+import 'package:madeb75/src/domain/auth/_commons/user/user.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'user_dto.freezed.dart';
