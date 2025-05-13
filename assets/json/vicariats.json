@@ -1,0 +1,191 @@
+[
+ {
+    "authCode": 7511,
+    "identificationCode": "75ND",
+    "vicariat": "Vicariat Forain Notre-Dame Cotonou",
+    "paroisses": [
+      { "name": "Cathédrale Notre-Dame des Miséricordes" },
+      { "name": "Saint Michel Gbéto" },
+      { "name": "Saint Jean-Baptiste Gbégamey" },
+      { "name": "Sainte Cécile Ahouansouri" },
+      { "name": "Bon Pasteur Cadjèhoun" },
+      { "name": "Sainte Rita" },
+      { "name": "Saint Louis Gbèdégbé" },
+      { "name": "Sainte Famille Djidjé" },
+      { "name": "Saint Basile le Grand / Jésus Eucharistie" },
+      { "name": "Saints Pierre et Paul Agla" },
+      { "name": "Notre-Dame de Visitation Gbèdagba" }
+    ]
+  },
+  {
+    "authCode": 7512,
+    "identificationCode": "75SC",
+    "vicariat": "Vicariat Forain Sacré-Cœur Cotonou",
+    "paroisses": [
+      { "name": "Sacré-Cœur Akpakpa" },
+      { "name": "Saint Martin Suru-Léré" },
+      { "name": "Sainte Thérèse Akpakpa PK6" },
+      { "name": "Saint Joseph Agbato" },
+      { "name": "Sainte Trinité Avotrou" },
+      { "name": "Saint Augustin Minontchou" },
+      { "name": "Saints Pierre et Paul Yénawa" },
+      { "name": "Christ-Roi Akpakpa-Dodomey" },
+      { "name": "Saint Mathieu Kpondéhou" },
+      { "name": "Saint Antoine de Padoue Tanto" }
+    ]
+  },
+  {
+    "authCode": 7513,
+    "identificationCode": "75SAZ",
+    "vicariat": "Vicariat Forain Saint Antoine Zogbo",
+    "paroisses": [
+      { "name": "Saint Antoine de Padoue Zogbo" },
+      { "name": "Saint François d’Assise Fidjrossè" },
+      { "name": "Marie Auxiliatrice Mènontin" },
+      { "name": "Saint Charles Lwanga Agla-Akplomey" },
+      { "name": "Sainte Marie Mère du Sauveur Midédji" },
+      { "name": "Sainte Trinité Hlazounto" },
+      { "name": "Saint Jean Bosco Sètovi" },
+      { "name": "Sainte Famille Akogbato" },
+      { "name": "Sainte Claire de Togbin" }
+    ]
+  },
+  {
+    "authCode": 7514,
+    "identificationCode": "75STG",
+    "vicariat": "Vicariat Forain Sainte Thérèse Godomey",
+    "paroisses": [
+      { "name": "Sainte Thérèse de l’Enfant Jésus Godomey" },
+      { "name": "Sainte Geneviève Pahou" },
+      { "name": "Communauté Chrétienne Adjarra Adovié" },
+      { "name": "Sainte Antoine de Padoue Cocotomey" },
+      { "name": "Communauté Chrétienne Saint Pio" },
+      { "name": "Saint Joseph Dèkoungbé" },
+      { "name": "Saint Joseph Gbodjè" },
+      { "name": "Saint Antoine de Padoue Ahozon" },
+      { "name": "Sainte Jeanne d’Arc Lobozounkpa" },
+      { "name": "Notre-Dame de Charité Godomey Fignonhou" },
+      { "name": "Saint Jean-Eudes Atropocodji" },
+      { "name": "Saint Jude Thaddée Pahou Zoungoudo" }
+    ]
+  },
+  {
+    "authCode": 7515,
+    "identificationCode": "75AC",
+    "vicariat": "Vicariat Forain de Abomey Calavi",
+    "paroisses": [
+      { "name": "Saint Antoine de Padoue Abomey-Calavi" },
+      { "name": "Sainte Joséphine Bakhita" },
+      { "name": "Notre-Dame de l’Immaculée Conception Akassato" },
+      { "name": "Sainte Famille Tankpè" },
+      { "name": "Saint Paul Zogbadjè" },
+      { "name": "Saint Michel Archange Gbodjo" },
+      { "name": "Sainte Thérèse de l’Enfant-Jésus Adjagbo" },
+      { "name": "Saint Albert Calavi Aïtchédji" },
+      { "name": "Sainte Thérèse d’Avila Gankon" },
+      { "name": "Saint Jean l’Évangéliste Wéga" },
+      { "name": "Sainte Trinité Zopah" }
+    ]
+  },
+  {
+    "authCode": 7516,
+    "identificationCode": "75SLO",
+    "vicariat": "Vicariat Forain Saint Luc de Ouèdo",
+    "paroisses": [
+      { "name": "Saint Luc Ouèdo" },
+      { "name": "Saint Gabriel Cococodji" },
+      { "name": "Saint Michel Archange Togoudo" },
+      { "name": "Saint Pierre Tokan" },
+      { "name": "Sainte Bernadette Soubirous Hêvié Dodji" },
+      { "name": "Communauté Chrétienne Somè" },
+      { "name": "Saint Benoît Womey" },
+      { "name": "Saint Michel Hwèto" },
+      { "name": "Saint Michel Hêvié Houinmè" },
+      { "name": "Saint Pierre-Claver Djèganto" },
+      { "name": "Saint Luc Yénadjro" },
+      { "name": "Saint Daniel Comboni Sodo" }
+    ]
+  },
+  {
+    "authCode": 7517,
+    "identificationCode": "75SJZ",
+    "vicariat": "Vicariat Forain Saint Jean de Zinvié",
+    "paroisses": [
+      { "name": "Saint Jean l’Évangéliste Zinvié" },
+      { "name": "Saint Joseph Glo-Yèkon" },
+      { "name": "Saint Michel Agbodjèdo" },
+      { "name": "Saint Jean-Marie Vianney Wawata" },
+      { "name": "Saint Paul Tangbo" },
+      { "name": "Sainte Bernadette Agonmè" },
+      { "name": "Notre-Dame du Rosaire Agassa Godomey" },
+      { "name": "Rosa Mystica Zounto" },
+      { "name": "Saint Jean de la Croix Kpodji-les-Monts" }
+    ]
+  },
+  {
+    "authCode": 7518,
+    "identificationCode": "75LN",
+    "vicariat": "Vicariat Forain du Lac Nokoué",
+    "paroisses": [
+      { "name": "Notre-Dame de l’Immaculée Conception Sô-Tchanhoué" },
+      { "name": "Saint Ambroise Ahomey Lokpo" },
+      { "name": "Saint Pierre et Paul Ganvié" },
+      { "name": "Saint Antoine de Padoue Dékanmey" },
+      { "name": "Sainte Bernadette Soubirous Sô-Ava" }
+    ]
+  },
+  {
+    "authCode": 7519,
+    "identificationCode": "75OUI",
+    "vicariat": "Vicariat Forain de Ouidah",
+    "paroisses": [
+      { "name": "Basilique Immaculée Conception Ouidah" },
+      { "name": "Saint Antoine de Padoue Sègbohouè" },
+      { "name": "Saint Paul Tovè Ouidah" },
+      { "name": "Sainte Cathérine Tokpa Domè" },
+      { "name": "Sainte Marie Madeleine Dékanmey Ahémé" },
+      { "name": "Saint Jean Gbèna Ouidah" },
+      { "name": "Sacré-Cœur Savi" },
+      { "name": "Sainte Trinité Atchakanmey" },
+      { "name": "Saint François d’Assise Agbanto" },
+      { "name": "Saint Martin de Tours Gbèzounmè" },
+      { "name": "Sacré-Cœur Gbèna Ouidah" }
+    ]
+  },
+  {
+    "authCode": 7520,
+    "identificationCode": "75ALL",
+    "vicariat": "Vicariat Forain de Allada",
+    "paroisses": [
+      { "name": "Sainte Jeanne d’Arc Allada" },
+      { "name": "Saint Jean-Baptiste Tori Bossito" },
+      { "name": "Saint Mathieu Tori Cada" },
+      { "name": "Saint Étienne Glotomey" },
+      { "name": "Saint Christophe Attogon" },
+      { "name": "Immaculée Conception Tori Gare" },
+      { "name": "Saint Joseph Azohouè-Cada" },
+      { "name": "Saint François-Xavier Sékou" },
+      { "name": "Notre-Dame de l’Immaculée Conception Ayou" },
+      { "name": "Transfiguration Dogoudo" },
+      { "name": "Sainte Famille Tori Kpovié" }
+    ]
+  },
+  {
+    "authCode": 7521,
+    "identificationCode": "75HOU",
+    "vicariat": "Vicariat Forain de Houègbo",
+    "paroisses": [
+      { "name": "Saint Antoine de Padoue Houègbo" },
+      { "name": "Saint Benoît Toffo" },
+      { "name": "Saint Michel Zè" },
+      { "name": "Sacré-Cœur Sèhouè" },
+      { "name": "Saint Joseph Hèkanmey" },
+      { "name": "Sacré-Cœur Sey-Kouffo" },
+      { "name": "Sainte Thérèse de l’Enfant Jésus Aïfa" },
+      { "name": "Saint Cyprien Dessah" },
+      { "name": "Sainte Anne Agon" },
+      { "name": "Saint Pierre Claver Koundokpoé" },
+      { "name": "Saint Jean-Baptiste Sèdjè Dénou" }
+    ]
+  }
+]
