@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "997630717154",
+    "project_id": "madeb75-76019",
+    "storage_bucket": "madeb75-76019.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:997630717154:android:b5026038ef8b12661902bb",
+        "android_client_info": {
+          "package_name": "com.madeb75.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArznB5obpPNEjT6LV-1WAu92LsP7c2XVk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,29 +1,14 @@
 import 'package:madeb75/src/infrastructure/_commons/network/env_config.dart';
 import 'package:madeb75/src/presentation/app.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'injection_container.dart' as ic;
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  //await Firebase.initializeApp();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await EnvManager().init(env: Environment.dev);
-  Bloc.observer = AppBlocObserver();
   ic.init();
   runApp(const App());
-}
-
-class AppBlocObserver extends BlocObserver {
-  @override
-  void onChange(BlocBase bloc, Change change) {
-    super.onChange(bloc, change);
-    if (kDebugMode) print(change);
-  }
-
-  @override
-  void onTransition(Bloc bloc, Transition transition) {
-    super.onTransition(bloc, transition);
-    if (kDebugMode) print(transition);
-  }
 }

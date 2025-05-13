@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:madeb75/src/domain/participant/models/participant.dart';
 import 'package:madeb75/src/infrastructure/_commons/exceptions.dart';
@@ -17,14 +19,13 @@ abstract class IParticipantRemoteDataSource {
 String collectionName = 'participants';
 
 class ParticipantRemoteDataSource implements IParticipantRemoteDataSource {
-  final FirebaseFirestore firestore;
-
-  ParticipantRemoteDataSource({required this.firestore});
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   @override
   Future<void> deleteAllParticipants() async {
     try {
-      QuerySnapshot snapshot = await firestore.collection(collectionName).get();
+      QuerySnapshot snapshot =
+          await _firestore.collection(collectionName).get();
       for (var doc in snapshot.docs) {
         await doc.reference.delete();
       }
@@ -36,7 +37,7 @@ class ParticipantRemoteDataSource implements IParticipantRemoteDataSource {
   @override
   Future<void> deleteParticipant({required String identifiant}) async {
     try {
-      await firestore.collection(collectionName).doc(identifiant).delete();
+      await _firestore.collection(collectionName).doc(identifiant).delete();
     } catch (e) {
       throw ServerException(e.toString());
     }
@@ -45,7 +46,8 @@ class ParticipantRemoteDataSource implements IParticipantRemoteDataSource {
   @override
   Future<List<Participant>> getAllParticipants() async {
     try {
-      QuerySnapshot snapshot = await firestore.collection(collectionName).get();
+      QuerySnapshot snapshot =
+          await _firestore.collection(collectionName).get();
       List<Participant> participants =
           snapshot.docs
               .map(
@@ -65,7 +67,7 @@ class ParticipantRemoteDataSource implements IParticipantRemoteDataSource {
   }) async {
     try {
       QuerySnapshot snapshot =
-          await firestore
+          await _firestore
               .collection(collectionName)
               .where('vicariatCode', isEqualTo: vicariatCode)
               .get();
@@ -78,6 +80,7 @@ class ParticipantRemoteDataSource implements IParticipantRemoteDataSource {
               .toList();
       return participants;
     } catch (e) {
+      log(e.toString());
       throw ServerException(e.toString());
     }
   }
@@ -86,7 +89,7 @@ class ParticipantRemoteDataSource implements IParticipantRemoteDataSource {
   Future<Participant?> getParticipant({required String identifiant}) async {
     try {
       DocumentSnapshot snapshot =
-          await firestore.collection(collectionName).doc(identifiant).get();
+          await _firestore.collection(collectionName).doc(identifiant).get();
       if (snapshot.exists) {
         return Participant.fromMap(snapshot.data() as Map<String, dynamic>);
       }
@@ -99,11 +102,12 @@ class ParticipantRemoteDataSource implements IParticipantRemoteDataSource {
   @override
   Future<void> saveParticipant({required Participant participant}) async {
     try {
-      await firestore
+      await _firestore
           .collection(collectionName)
           .doc(participant.identifiant)
           .set(participant.toMap());
     } catch (e) {
+      log(e.toString());
       throw ServerException(e.toString());
     }
   }
@@ -113,12 +117,13 @@ class ParticipantRemoteDataSource implements IParticipantRemoteDataSource {
     required Participant participant,
   }) async {
     try {
-      await firestore
+      await _firestore
           .collection(collectionName)
           .doc(participant.identifiant)
           .update(participant.toMap());
       return participant;
     } catch (e) {
+      log(e.toString());
       throw ServerException(e.toString());
     }
   }

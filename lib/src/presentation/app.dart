@@ -1,6 +1,7 @@
 import 'package:madeb75/l10n/app_localizations.dart';
 import 'package:madeb75/src/application/connected/connected_bloc.dart';
 import 'package:madeb75/injection_container.dart';
+import 'package:madeb75/src/application/participant/participant_bloc.dart';
 import 'package:madeb75/src/presentation/_commons/route/app_router.gr.dart';
 import 'package:madeb75/src/presentation/_commons/theming/app_theme.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,10 @@ class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [BlocProvider(create: (_) => sl<ConnectedBloc>())],
+      providers: [
+        BlocProvider(create: (_) => sl<ConnectedBloc>()),
+        BlocProvider(create: (_) => sl<ParticipantBloc>()),
+      ],
       child: MaterialApp.router(
         routerDelegate: _appRouter.delegate(),
         routeInformationProvider: _appRouter.routeInfoProvider(),

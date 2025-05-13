@@ -1,10 +1,14 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:madeb75/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
+import 'package:madeb75/src/application/participant/participant_bloc.dart';
 import 'package:madeb75/src/domain/vicariats/models/vicariat.dart';
 import 'package:madeb75/src/infrastructure/_commons/network/user_session.dart';
 import 'package:madeb75/src/presentation/_commons/theming/app_color.dart';
 import 'package:madeb75/src/presentation/_commons/theming/app_size.dart';
+import 'package:madeb75/src/presentation/_commons_widgets/loading_widget.dart';
+import 'package:madeb75/src/presentation/home/pages/participants_widget.dart';
 import 'package:madeb75/src/presentation/home/sheets/bottom_sheet_participant.dart';
 
 @RoutePage()
@@ -97,8 +101,11 @@ class _HomePageState extends State<HomePage> {
                 (value) => setState(() {
                   currentIndex = value;
                 }),
-            tabs: const [
-              Tab(text: 'Participants'),
+            tabs: [
+              Tab(
+                text:
+                    'Participants (${BlocProvider.of<ParticipantBloc>(context, listen: true).state.vicariatParticipants?.length ?? 0})',
+              ),
               Tab(text: 'Achats Pagne'),
               Tab(text: 'Atelier coloriage'),
             ],
@@ -106,45 +113,9 @@ class _HomePageState extends State<HomePage> {
         ),
         body: TabBarView(
           children: [
-            Padding(
-              padding: const EdgeInsets.only(bottom: 10),
-              child: ListView.builder(
-                shrinkWrap: true,
-                physics: const BouncingScrollPhysics(),
-                itemCount: 10,
-                itemBuilder: (context, index) {
-                  return Card(
-                    elevation: 1.0,
-                    color: Colors.white,
-                    child: ListTile(
-                      leading: const Icon(Icons.person),
-                      title: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('ID ${index + 1}'),
-                          Text('Participant ${index + 1}'),
-                          Text('Saint Jean Baptiste'),
-                        ],
-                      ),
-                      trailing: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          IconButton(
-                            onPressed: () {},
-                            icon: const Icon(Icons.edit),
-                          ),
-                          IconButton(
-                            onPressed: () {},
-                            icon: const Icon(Icons.delete),
-                          ),
-                        ],
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ),
+            currentVicariat == null
+                ? Center(child: LoadingWidget())
+                : ParticipantsWidget(vicariat: currentVicariat!),
             Icon(Icons.directions_transit),
             Icon(Icons.directions_bike),
           ],

@@ -35,7 +35,14 @@ customShowDialog({
                     ),
                     child: SizedBox(
                       height:
-                          height ?? MediaQuery.of(context).size.height * 0.1,
+                          height ??
+                          AppSize.getSize(
+                            context: context,
+                            mobileValue:
+                                MediaQuery.of(context).size.height * 0.1,
+                            tabletValue:
+                                MediaQuery.of(context).size.height * 0.14,
+                          ),
                       child: Column(
                         children: [
                           Text(
@@ -56,6 +63,7 @@ customShowDialog({
                               fontSize: AppSize.getSize(
                                 context: context,
                                 mobileValue: 16,
+                                tabletValue: 24,
                               ),
                             ),
                         ],

@@ -48,8 +48,8 @@ flutter test
 
 1. **Cloner le projet**
 ```bash
-git clone https://github.com/sylvere36/flutter.baseapp.git
-cd flutter.baseapp
+git clone https://github.com/sylvere36/flutter.madeb75.git
+cd flutter.madeb75
 ```
 
 2. **Installer Flutter via FVM**
