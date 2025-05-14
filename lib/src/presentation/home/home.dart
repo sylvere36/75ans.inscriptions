@@ -2,13 +2,19 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:madeb75/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
+import 'package:madeb75/src/application/achat_pagne/achat_pagne_bloc.dart';
+import 'package:madeb75/src/application/atelier/atelier_bloc.dart';
 import 'package:madeb75/src/application/participant/participant_bloc.dart';
 import 'package:madeb75/src/domain/vicariats/models/vicariat.dart';
 import 'package:madeb75/src/infrastructure/_commons/network/user_session.dart';
 import 'package:madeb75/src/presentation/_commons/theming/app_color.dart';
 import 'package:madeb75/src/presentation/_commons/theming/app_size.dart';
 import 'package:madeb75/src/presentation/_commons_widgets/loading_widget.dart';
+import 'package:madeb75/src/presentation/home/pages/achat_pagne_widget.dart';
+import 'package:madeb75/src/presentation/home/pages/atelier_widget.dart';
 import 'package:madeb75/src/presentation/home/pages/participants_widget.dart';
+import 'package:madeb75/src/presentation/home/sheets/bottom_sheet_achat_pagne.dart';
+import 'package:madeb75/src/presentation/home/sheets/bottom_sheet_atelier.dart';
 import 'package:madeb75/src/presentation/home/sheets/bottom_sheet_participant.dart';
 
 @RoutePage()
@@ -106,8 +112,14 @@ class _HomePageState extends State<HomePage> {
                 text:
                     'Participants (${BlocProvider.of<ParticipantBloc>(context, listen: true).state.vicariatParticipants?.length ?? 0})',
               ),
-              Tab(text: 'Achats Pagne'),
-              Tab(text: 'Atelier coloriage'),
+              Tab(
+                text:
+                    'Achats Pagne (${BlocProvider.of<AchatPagneBloc>(context, listen: true).state.vicariatAchatPagnes?.length ?? 0})',
+              ),
+              Tab(
+                text:
+                    'Atelier coloriage (${BlocProvider.of<AtelierBloc>(context, listen: true).state.vicariatAteliers?.length ?? 0})',
+              ),
             ],
           ),
         ),
@@ -116,8 +128,12 @@ class _HomePageState extends State<HomePage> {
             currentVicariat == null
                 ? Center(child: LoadingWidget())
                 : ParticipantsWidget(vicariat: currentVicariat!),
-            Icon(Icons.directions_transit),
-            Icon(Icons.directions_bike),
+            currentVicariat == null
+                ? Center(child: LoadingWidget())
+                : AchatPagnesWidget(vicariat: currentVicariat!),
+            currentVicariat == null
+                ? Center(child: LoadingWidget())
+                : AteliersWidget(vicariat: currentVicariat!),
           ],
         ),
 
@@ -129,6 +145,15 @@ class _HomePageState extends State<HomePage> {
                 context: context,
                 vicariat: currentVicariat!,
               );
+            }
+            if (currentIndex == 1) {
+              bottomSheetAchatPagne(
+                context: context,
+                vicariat: currentVicariat!,
+              );
+            }
+            if (currentIndex == 2) {
+              bottomSheetAtelier(context: context, vicariat: currentVicariat!);
             }
           },
           backgroundColor: AppColors.primary,

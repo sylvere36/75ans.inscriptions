@@ -3,8 +3,8 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:madeb75/src/application/participant/participant_bloc.dart';
-import 'package:madeb75/src/domain/participant/models/participant.dart';
+import 'package:madeb75/src/application/atelier/atelier_bloc.dart';
+import 'package:madeb75/src/domain/atelier/models/atelier.dart';
 import 'package:madeb75/src/domain/vicariats/models/vicariat.dart';
 import 'package:madeb75/src/presentation/_commons/constance/app_constance.dart';
 import 'package:madeb75/src/presentation/_commons/theming/app_size.dart';
@@ -12,42 +12,34 @@ import 'package:madeb75/src/presentation/_commons_widgets/app_decoration.dart';
 import 'package:madeb75/src/presentation/_commons_widgets/button_widget.dart';
 import 'package:madeb75/src/presentation/_commons_widgets/global_bottom_sheet.dart';
 
-bottomSheetParticipant({
+bottomSheetAtelier({
   required BuildContext context,
   required Vicariat vicariat,
-  Participant? participant,
+  Atelier? atelier,
 }) {
   GlobalBottomSheet.show(
     context: context,
     maxHeight: MediaQuery.of(context).size.height * 0.7,
-    widget: AddEditParticipantWidget(
-      vicariat: vicariat,
-      participant: participant,
-    ),
+    widget: AddEditAtelierWidget(vicariat: vicariat, atelier: atelier),
   );
 }
 
-class AddEditParticipantWidget extends StatefulWidget {
+class AddEditAtelierWidget extends StatefulWidget {
   final Vicariat vicariat;
-  final Participant? participant;
-  const AddEditParticipantWidget({
-    super.key,
-    required this.vicariat,
-    this.participant,
-  });
+  final Atelier? atelier;
+  const AddEditAtelierWidget({super.key, required this.vicariat, this.atelier});
 
   @override
-  State<AddEditParticipantWidget> createState() =>
-      _AddEditParticipantWidgetState();
+  State<AddEditAtelierWidget> createState() => _AddEditAtelierWidgetState();
 }
 
-class _AddEditParticipantWidgetState extends State<AddEditParticipantWidget> {
+class _AddEditAtelierWidgetState extends State<AddEditAtelierWidget> {
   TextEditingController nomController = TextEditingController();
   TextEditingController prenomController = TextEditingController();
   TextEditingController titreController = TextEditingController();
   TextEditingController paroisseController = TextEditingController();
 
-  Participant participant = Participant(identifiant: '', vicariatCode: '');
+  Atelier atelier = Atelier(identifiant: '', vicariatCode: '');
 
   @override
   void initState() {
@@ -56,17 +48,17 @@ class _AddEditParticipantWidgetState extends State<AddEditParticipantWidget> {
   }
 
   init() {
-    if (widget.participant != null) {
+    if (widget.atelier != null) {
       setState(() {
-        nomController.text = widget.participant!.nom ?? '';
-        prenomController.text = widget.participant!.prenom ?? '';
-        titreController.text = widget.participant!.titre ?? '';
-        paroisseController.text = widget.participant!.paroisse ?? '';
-        participant = widget.participant!;
+        nomController.text = widget.atelier!.nom ?? '';
+        prenomController.text = widget.atelier!.prenom ?? '';
+        titreController.text = widget.atelier!.titre ?? '';
+        paroisseController.text = widget.atelier!.paroisse ?? '';
+        atelier = widget.atelier!;
       });
     } else {
       int count =
-          BlocProvider.of<ParticipantBloc>(context).state.vicariatParticipants!
+          BlocProvider.of<AtelierBloc>(context).state.vicariatAteliers!
               .where(
                 (element) =>
                     element.vicariatCode == widget.vicariat.authCode.toString(),
@@ -77,7 +69,7 @@ class _AddEditParticipantWidgetState extends State<AddEditParticipantWidget> {
       String identifiant = '${widget.vicariat.identificationCode}$codeSuffix';
       log('Identifiant: $identifiant');
       setState(() {
-        participant = Participant(
+        atelier = Atelier(
           identifiant: '${widget.vicariat.identificationCode}$codeSuffix',
           vicariat: widget.vicariat.vicariat,
           vicariatCode: widget.vicariat.authCode.toString(),
@@ -90,7 +82,7 @@ class _AddEditParticipantWidgetState extends State<AddEditParticipantWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ParticipantBloc, ParticipantState>(
+    return BlocBuilder<AtelierBloc, AtelierState>(
       builder: (context, state) {
         return Container(
           padding: EdgeInsets.only(
@@ -122,7 +114,7 @@ class _AddEditParticipantWidgetState extends State<AddEditParticipantWidget> {
                       ),
                     ),
                     Text(
-                      '${widget.participant != null ? 'Modifier' : 'Ajouter'} un participant',
+                      '${widget.atelier != null ? 'Modifier' : 'Ajouter'} un atelier',
                       style: TextStyle(
                         fontSize: AppSize.getSize(
                           context: context,
@@ -153,7 +145,7 @@ class _AddEditParticipantWidgetState extends State<AddEditParticipantWidget> {
                 padding: const EdgeInsets.all(8.0),
                 child: FormBuilderTextField(
                   name: 'nom',
-                  initialValue: widget.participant?.nom,
+                  initialValue: widget.atelier?.nom,
                   decoration: appInputDecoration(
                     hintText: 'Ex: Bossou',
                     context: context,
@@ -162,7 +154,7 @@ class _AddEditParticipantWidgetState extends State<AddEditParticipantWidget> {
                   onChanged: (value) {
                     setState(() {
                       nomController.text = value ?? '';
-                      participant.nom = value;
+                      atelier.nom = value;
                     });
                   },
                   style: TextStyle(
@@ -193,7 +185,7 @@ class _AddEditParticipantWidgetState extends State<AddEditParticipantWidget> {
                 padding: const EdgeInsets.all(8.0),
                 child: FormBuilderTextField(
                   name: 'prenom',
-                  initialValue: widget.participant?.prenom,
+                  initialValue: widget.atelier?.prenom,
                   decoration: appInputDecoration(
                     hintText: 'Ex: Paul',
                     context: context,
@@ -202,7 +194,7 @@ class _AddEditParticipantWidgetState extends State<AddEditParticipantWidget> {
                   onChanged: (value) {
                     setState(() {
                       prenomController.text = value ?? '';
-                      participant.prenom = value;
+                      atelier.prenom = value;
                     });
                   },
                   style: TextStyle(
@@ -233,7 +225,7 @@ class _AddEditParticipantWidgetState extends State<AddEditParticipantWidget> {
                 padding: const EdgeInsets.all(8.0),
                 child: FormBuilderDropdown<String>(
                   name: 'paroisse',
-                  initialValue: widget.participant?.paroisse,
+                  initialValue: widget.atelier?.paroisse,
                   decoration: appInputDecoration(
                     hintText: 'Paroisse',
                     context: context,
@@ -249,7 +241,7 @@ class _AddEditParticipantWidgetState extends State<AddEditParticipantWidget> {
                   onChanged: (value) {
                     setState(() {
                       paroisseController.text = value ?? '';
-                      participant.paroisse = value;
+                      atelier.paroisse = value;
                     });
                   },
                   items:
@@ -280,7 +272,7 @@ class _AddEditParticipantWidgetState extends State<AddEditParticipantWidget> {
                 padding: const EdgeInsets.all(8.0),
                 child: FormBuilderDropdown<String>(
                   name: 'titre',
-                  initialValue: widget.participant?.titre,
+                  initialValue: widget.atelier?.titre,
                   decoration: appInputDecoration(
                     hintText: 'Titre',
                     context: context,
@@ -296,11 +288,11 @@ class _AddEditParticipantWidgetState extends State<AddEditParticipantWidget> {
                   onChanged: (value) {
                     setState(() {
                       titreController.text = value ?? '';
-                      participant.titre = value;
+                      atelier.titre = value;
                     });
                   },
                   items:
-                      legionTitre.map((e) {
+                      deuxfirstLegion.map((e) {
                         return DropdownMenuItem(value: e, child: Text(e));
                       }).toList(),
                 ),
@@ -309,20 +301,20 @@ class _AddEditParticipantWidgetState extends State<AddEditParticipantWidget> {
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: ButtonWidget(
                   onpressed:
-                      participant.isValid()
+                      atelier.isValid()
                           ? (() {
-                            if (widget.participant == null) {
-                              context.read<ParticipantBloc>().add(
-                                SaveParticipant(participant: participant),
+                            if (widget.atelier == null) {
+                              context.read<AtelierBloc>().add(
+                                SaveAtelier(atelier: atelier),
                               );
                             } else {
-                              context.read<ParticipantBloc>().add(
-                                UpdateParticipant(participant: participant),
+                              context.read<AtelierBloc>().add(
+                                UpdateAtelier(atelier: atelier),
                               );
                             }
                           })
                           : null,
-                  title: widget.participant != null ? 'Modifier' : 'Ajouter',
+                  title: widget.atelier != null ? 'Modifier' : 'Ajouter',
                   loading: state.isLoading,
                   textColor: Colors.white,
                 ),

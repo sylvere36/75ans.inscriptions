@@ -3,8 +3,8 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:madeb75/src/application/participant/participant_bloc.dart';
-import 'package:madeb75/src/domain/participant/models/participant.dart';
+import 'package:madeb75/src/application/achat_pagne/achat_pagne_bloc.dart';
+import 'package:madeb75/src/domain/achat_pagne/models/achat_pagne.dart';
 import 'package:madeb75/src/domain/vicariats/models/vicariat.dart';
 import 'package:madeb75/src/presentation/_commons/constance/app_constance.dart';
 import 'package:madeb75/src/presentation/_commons/theming/app_size.dart';
@@ -12,42 +12,39 @@ import 'package:madeb75/src/presentation/_commons_widgets/app_decoration.dart';
 import 'package:madeb75/src/presentation/_commons_widgets/button_widget.dart';
 import 'package:madeb75/src/presentation/_commons_widgets/global_bottom_sheet.dart';
 
-bottomSheetParticipant({
+bottomSheetAchatPagne({
   required BuildContext context,
   required Vicariat vicariat,
-  Participant? participant,
+  AchatPagne? achatPagne,
 }) {
   GlobalBottomSheet.show(
     context: context,
     maxHeight: MediaQuery.of(context).size.height * 0.7,
-    widget: AddEditParticipantWidget(
-      vicariat: vicariat,
-      participant: participant,
-    ),
+    widget: AddEditAchatPagneWidget(vicariat: vicariat, achatPagne: achatPagne),
   );
 }
 
-class AddEditParticipantWidget extends StatefulWidget {
+class AddEditAchatPagneWidget extends StatefulWidget {
   final Vicariat vicariat;
-  final Participant? participant;
-  const AddEditParticipantWidget({
+  final AchatPagne? achatPagne;
+  const AddEditAchatPagneWidget({
     super.key,
     required this.vicariat,
-    this.participant,
+    this.achatPagne,
   });
 
   @override
-  State<AddEditParticipantWidget> createState() =>
-      _AddEditParticipantWidgetState();
+  State<AddEditAchatPagneWidget> createState() =>
+      _AddEditAchatPagneWidgetState();
 }
 
-class _AddEditParticipantWidgetState extends State<AddEditParticipantWidget> {
+class _AddEditAchatPagneWidgetState extends State<AddEditAchatPagneWidget> {
   TextEditingController nomController = TextEditingController();
   TextEditingController prenomController = TextEditingController();
   TextEditingController titreController = TextEditingController();
   TextEditingController paroisseController = TextEditingController();
 
-  Participant participant = Participant(identifiant: '', vicariatCode: '');
+  AchatPagne achatPagne = AchatPagne(identifiant: '', vicariatCode: '');
 
   @override
   void initState() {
@@ -56,17 +53,17 @@ class _AddEditParticipantWidgetState extends State<AddEditParticipantWidget> {
   }
 
   init() {
-    if (widget.participant != null) {
+    if (widget.achatPagne != null) {
       setState(() {
-        nomController.text = widget.participant!.nom ?? '';
-        prenomController.text = widget.participant!.prenom ?? '';
-        titreController.text = widget.participant!.titre ?? '';
-        paroisseController.text = widget.participant!.paroisse ?? '';
-        participant = widget.participant!;
+        nomController.text = widget.achatPagne!.nom ?? '';
+        prenomController.text = widget.achatPagne!.prenom ?? '';
+        titreController.text = widget.achatPagne!.titre ?? '';
+        paroisseController.text = widget.achatPagne!.paroisse ?? '';
+        achatPagne = widget.achatPagne!;
       });
     } else {
       int count =
-          BlocProvider.of<ParticipantBloc>(context).state.vicariatParticipants!
+          BlocProvider.of<AchatPagneBloc>(context).state.vicariatAchatPagnes!
               .where(
                 (element) =>
                     element.vicariatCode == widget.vicariat.authCode.toString(),
@@ -77,7 +74,7 @@ class _AddEditParticipantWidgetState extends State<AddEditParticipantWidget> {
       String identifiant = '${widget.vicariat.identificationCode}$codeSuffix';
       log('Identifiant: $identifiant');
       setState(() {
-        participant = Participant(
+        achatPagne = AchatPagne(
           identifiant: '${widget.vicariat.identificationCode}$codeSuffix',
           vicariat: widget.vicariat.vicariat,
           vicariatCode: widget.vicariat.authCode.toString(),
@@ -90,7 +87,7 @@ class _AddEditParticipantWidgetState extends State<AddEditParticipantWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ParticipantBloc, ParticipantState>(
+    return BlocBuilder<AchatPagneBloc, AchatPagneState>(
       builder: (context, state) {
         return Container(
           padding: EdgeInsets.only(
@@ -122,7 +119,7 @@ class _AddEditParticipantWidgetState extends State<AddEditParticipantWidget> {
                       ),
                     ),
                     Text(
-                      '${widget.participant != null ? 'Modifier' : 'Ajouter'} un participant',
+                      '${widget.achatPagne != null ? 'Modifier' : 'Ajouter'} un achatPagne',
                       style: TextStyle(
                         fontSize: AppSize.getSize(
                           context: context,
@@ -153,7 +150,7 @@ class _AddEditParticipantWidgetState extends State<AddEditParticipantWidget> {
                 padding: const EdgeInsets.all(8.0),
                 child: FormBuilderTextField(
                   name: 'nom',
-                  initialValue: widget.participant?.nom,
+                  initialValue: widget.achatPagne?.nom,
                   decoration: appInputDecoration(
                     hintText: 'Ex: Bossou',
                     context: context,
@@ -162,7 +159,7 @@ class _AddEditParticipantWidgetState extends State<AddEditParticipantWidget> {
                   onChanged: (value) {
                     setState(() {
                       nomController.text = value ?? '';
-                      participant.nom = value;
+                      achatPagne.nom = value;
                     });
                   },
                   style: TextStyle(
@@ -193,7 +190,7 @@ class _AddEditParticipantWidgetState extends State<AddEditParticipantWidget> {
                 padding: const EdgeInsets.all(8.0),
                 child: FormBuilderTextField(
                   name: 'prenom',
-                  initialValue: widget.participant?.prenom,
+                  initialValue: widget.achatPagne?.prenom,
                   decoration: appInputDecoration(
                     hintText: 'Ex: Paul',
                     context: context,
@@ -202,7 +199,7 @@ class _AddEditParticipantWidgetState extends State<AddEditParticipantWidget> {
                   onChanged: (value) {
                     setState(() {
                       prenomController.text = value ?? '';
-                      participant.prenom = value;
+                      achatPagne.prenom = value;
                     });
                   },
                   style: TextStyle(
@@ -233,7 +230,7 @@ class _AddEditParticipantWidgetState extends State<AddEditParticipantWidget> {
                 padding: const EdgeInsets.all(8.0),
                 child: FormBuilderDropdown<String>(
                   name: 'paroisse',
-                  initialValue: widget.participant?.paroisse,
+                  initialValue: widget.achatPagne?.paroisse,
                   decoration: appInputDecoration(
                     hintText: 'Paroisse',
                     context: context,
@@ -249,7 +246,7 @@ class _AddEditParticipantWidgetState extends State<AddEditParticipantWidget> {
                   onChanged: (value) {
                     setState(() {
                       paroisseController.text = value ?? '';
-                      participant.paroisse = value;
+                      achatPagne.paroisse = value;
                     });
                   },
                   items:
@@ -280,7 +277,7 @@ class _AddEditParticipantWidgetState extends State<AddEditParticipantWidget> {
                 padding: const EdgeInsets.all(8.0),
                 child: FormBuilderDropdown<String>(
                   name: 'titre',
-                  initialValue: widget.participant?.titre,
+                  initialValue: widget.achatPagne?.titre,
                   decoration: appInputDecoration(
                     hintText: 'Titre',
                     context: context,
@@ -296,7 +293,7 @@ class _AddEditParticipantWidgetState extends State<AddEditParticipantWidget> {
                   onChanged: (value) {
                     setState(() {
                       titreController.text = value ?? '';
-                      participant.titre = value;
+                      achatPagne.titre = value;
                     });
                   },
                   items:
@@ -306,23 +303,62 @@ class _AddEditParticipantWidgetState extends State<AddEditParticipantWidget> {
                 ),
               ),
               Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: Text(
+                  'Nombre de mètre : ',
+                  style: TextStyle(
+                    fontSize: AppSize.getSize(
+                      context: context,
+                      mobileValue: 14,
+                      tabletValue: 16,
+                    ),
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: FormBuilderTextField(
+                  name: 'metre',
+                  initialValue: widget.achatPagne?.prenom,
+                  decoration: appInputDecoration(
+                    hintText: '',
+                    context: context,
+                  ),
+                  keyboardType: TextInputType.number,
+                  onChanged: (value) {
+                    setState(() {
+                      achatPagne.nombrePagne = int.tryParse(value ?? '') ?? 0;
+                    });
+                  },
+                  style: TextStyle(
+                    fontSize: AppSize.getSize(
+                      context: context,
+                      mobileValue: 14,
+                      tabletValue: 17,
+                    ),
+                  ),
+                  obscureText: false,
+                ),
+              ),
+              Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: ButtonWidget(
                   onpressed:
-                      participant.isValid()
+                      achatPagne.isValid()
                           ? (() {
-                            if (widget.participant == null) {
-                              context.read<ParticipantBloc>().add(
-                                SaveParticipant(participant: participant),
+                            if (widget.achatPagne == null) {
+                              context.read<AchatPagneBloc>().add(
+                                SaveAchatPagne(achatPagne: achatPagne),
                               );
                             } else {
-                              context.read<ParticipantBloc>().add(
-                                UpdateParticipant(participant: participant),
+                              context.read<AchatPagneBloc>().add(
+                                UpdateAchatPagne(achatPagne: achatPagne),
                               );
                             }
                           })
                           : null,
-                  title: widget.participant != null ? 'Modifier' : 'Ajouter',
+                  title: widget.achatPagne != null ? 'Modifier' : 'Ajouter',
                   loading: state.isLoading,
                   textColor: Colors.white,
                 ),
