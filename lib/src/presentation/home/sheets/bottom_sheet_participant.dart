@@ -264,7 +264,7 @@ class _AddEditParticipantWidgetState extends State<AddEditParticipantWidget> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8),
                 child: Text(
-                  'Titre(s) : ',
+                  'Titre/Légion : ',
                   style: TextStyle(
                     fontSize: AppSize.getSize(
                       context: context,
@@ -307,6 +307,8 @@ class _AddEditParticipantWidgetState extends State<AddEditParticipantWidget> {
                         "Animateur(trice)",
                         "Jeune Accompagnateur(trice)",
                         "Accompagnateur(trice)",
+                        "Aîné(e)/Ancien(ne)",
+                        "Autre",
                       ].map((e) {
                         return DropdownMenuItem(value: e, child: Text(e));
                       }).toList(),

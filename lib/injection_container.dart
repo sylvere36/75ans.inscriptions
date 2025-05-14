@@ -1,12 +1,20 @@
+import 'package:madeb75/src/application/achat_pagne/achat_pagne_bloc.dart';
+import 'package:madeb75/src/application/atelier/atelier_bloc.dart';
 import 'package:madeb75/src/application/auth/login/login_bloc.dart';
 import 'package:madeb75/src/application/connected/connected_bloc.dart';
 import 'package:madeb75/src/application/participant/participant_bloc.dart';
 import 'package:madeb75/src/application/splash/splash_bloc.dart';
+import 'package:madeb75/src/domain/achat_pagne/i_achat_pagne_repository.dart';
+import 'package:madeb75/src/domain/atelier/i_atelier_repository.dart';
 import 'package:madeb75/src/domain/auth/_commons/i_auth_repository.dart';
 import 'package:madeb75/src/domain/participant/i_participant_repository.dart';
 import 'package:madeb75/src/infrastructure/_commons/network/app_requests.dart';
 import 'package:madeb75/src/infrastructure/_commons/network/network_info.dart';
 import 'package:madeb75/src/infrastructure/_commons/network/user_session.dart';
+import 'package:madeb75/src/infrastructure/achat_pagne/achat_pagne_repository.dart';
+import 'package:madeb75/src/infrastructure/achat_pagne/data_sources/achat_pagne_remote_data_source.dart';
+import 'package:madeb75/src/infrastructure/atelier/atelier_repository.dart';
+import 'package:madeb75/src/infrastructure/atelier/data_sources/atelier_remote_data_source.dart';
 import 'package:madeb75/src/infrastructure/auth/auth_repository.dart';
 import 'package:madeb75/src/infrastructure/auth/data_sources/auth_local_data_source.dart';
 import 'package:madeb75/src/infrastructure/auth/data_sources/auth_remote_data_source.dart';
@@ -24,6 +32,8 @@ Future<void> init() async {
   initAuth();
   initConnected();
   initParticipant();
+  initAchatPagne();
+  initAtelier();
 }
 
 void initSplashScreen() {
@@ -66,6 +76,26 @@ void initParticipant() async {
     () => ParticipantRepository(networkInfo: sl(), remoteDataSource: sl()),
   );
   sl.registerFactory(() => ParticipantBloc(repository: sl()));
+}
+
+void initAchatPagne() async {
+  sl.registerLazySingleton<IAchatPagneRemoteDataSource>(
+    () => AchatPagneRemoteDataSource(),
+  );
+  sl.registerLazySingleton<IAchatPagneRepository>(
+    () => AchatPagneRepository(networkInfo: sl(), remoteDataSource: sl()),
+  );
+  sl.registerFactory(() => AchatPagneBloc(repository: sl()));
+}
+
+void initAtelier() async {
+  sl.registerLazySingleton<IAtelierRemoteDataSource>(
+    () => AtelierRemoteDataSource(),
+  );
+  sl.registerLazySingleton<IAtelierRepository>(
+    () => AtelierRepository(networkInfo: sl(), remoteDataSource: sl()),
+  );
+  sl.registerFactory(() => AtelierBloc(repository: sl()));
 }
 
 void initConnected() async {

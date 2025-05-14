@@ -1,4 +1,6 @@
 import 'package:madeb75/l10n/app_localizations.dart';
+import 'package:madeb75/src/application/achat_pagne/achat_pagne_bloc.dart';
+import 'package:madeb75/src/application/atelier/atelier_bloc.dart';
 import 'package:madeb75/src/application/connected/connected_bloc.dart';
 import 'package:madeb75/injection_container.dart';
 import 'package:madeb75/src/application/participant/participant_bloc.dart';
@@ -27,6 +29,8 @@ class _AppState extends State<App> {
       providers: [
         BlocProvider(create: (_) => sl<ConnectedBloc>()),
         BlocProvider(create: (_) => sl<ParticipantBloc>()),
+        BlocProvider(create: (_) => sl<AchatPagneBloc>()),
+        BlocProvider(create: (_) => sl<AtelierBloc>()),
       ],
       child: MaterialApp.router(
         routerDelegate: _appRouter.delegate(),

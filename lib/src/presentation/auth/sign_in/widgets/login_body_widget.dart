@@ -64,7 +64,7 @@ class _LoginBodyWidgetState extends State<LoginBodyWidget> {
                   child: FormBuilderDropdown<Vicariat>(
                     name: 'vicariat',
                     decoration: appInputDecoration(
-                      labelText: 'Vicariat',
+                      labelText: 'Choississez votre vicariat',
                       context: context,
                     ),
                     style: TextStyle(
