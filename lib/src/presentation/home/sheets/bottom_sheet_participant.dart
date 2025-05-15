@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -7,6 +5,7 @@ import 'package:madeb75/src/application/participant/participant_bloc.dart';
 import 'package:madeb75/src/domain/participant/models/participant.dart';
 import 'package:madeb75/src/domain/vicariats/models/vicariat.dart';
 import 'package:madeb75/src/presentation/_commons/constance/app_constance.dart';
+import 'package:madeb75/src/presentation/_commons/helpers/unique_identifiant.dart';
 import 'package:madeb75/src/presentation/_commons/theming/app_size.dart';
 import 'package:madeb75/src/presentation/_commons_widgets/app_decoration.dart';
 import 'package:madeb75/src/presentation/_commons_widgets/button_widget.dart';
@@ -73,12 +72,19 @@ class _AddEditParticipantWidgetState extends State<AddEditParticipantWidget> {
               )
               .length +
           1;
-      String codeSuffix = count.toString().padLeft(3, '0');
-      String identifiant = '${widget.vicariat.identificationCode}$codeSuffix';
-      log('Identifiant: $identifiant');
+      String identifiant = generateUniqueIdentitant(
+        identifiants:
+            BlocProvider.of<ParticipantBloc>(context)
+                .state
+                .vicariatParticipants!
+                .map((e) => e.identifiant ?? '')
+                .toList(),
+        count: count,
+        identificationCode: widget.vicariat.identificationCode!,
+      );
       setState(() {
         participant = Participant(
-          identifiant: '${widget.vicariat.identificationCode}$codeSuffix',
+          identifiant: identifiant,
           vicariat: widget.vicariat.vicariat,
           vicariatCode: widget.vicariat.authCode.toString(),
           createdAt: DateTime.now(),

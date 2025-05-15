@@ -6,6 +6,8 @@ import 'package:madeb75/src/domain/participant/models/participant.dart';
 import 'package:madeb75/src/domain/vicariats/models/vicariat.dart';
 import 'package:madeb75/src/presentation/_commons/theming/app_color.dart';
 import 'package:madeb75/src/presentation/_commons/theming/app_size.dart';
+import 'package:madeb75/src/presentation/_commons_widgets/button_widget.dart';
+import 'package:madeb75/src/presentation/_commons_widgets/empty_widget.dart';
 import 'package:madeb75/src/presentation/_commons_widgets/global_dialog_widget.dart';
 import 'package:madeb75/src/presentation/_commons_widgets/loading_widget.dart';
 import 'package:madeb75/src/presentation/_commons_widgets/my_toast.dart';
@@ -59,107 +61,139 @@ class _ParticipantsWidgetState extends State<ParticipantsWidget> {
           child:
               state.vicariatParticipants == null
                   ? Center(child: LoadingWidget())
-                  : ListView.builder(
-                    shrinkWrap: true,
-                    physics: const BouncingScrollPhysics(),
-                    itemCount: state.vicariatParticipants!.length,
-                    itemBuilder: (context, index) {
-                      Participant participant =
-                          state.vicariatParticipants![index];
-                      return Card(
-                        elevation: 1.0,
-                        color: Colors.white,
-                        child: ListTile(
-                          leading: const Icon(Icons.person),
-                          title: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                '${participant.identifiant}',
-                                style: TextStyle(
-                                  color: AppColors.primary,
-                                  fontSize: AppSize.getSize(
-                                    context: context,
-                                    mobileValue: 12,
-                                    tabletValue: 14,
-                                  ),
-                                ),
-                              ),
-                              Text(
-                                '${participant.nom} ${participant.prenom}',
-                                style: TextStyle(
-                                  fontSize: AppSize.getSize(
-                                    context: context,
-                                    mobileValue: 14,
-                                    tabletValue: 16,
-                                  ),
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              Text(
-                                '${participant.titre}',
-                                style: TextStyle(
-                                  fontSize: AppSize.getSize(
-                                    context: context,
-                                    mobileValue: 12,
-                                    tabletValue: 14,
-                                  ),
-                                ),
-                              ),
-                              Text(
-                                '${participant.paroisse}',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: AppSize.getSize(
-                                    context: context,
-                                    mobileValue: 12,
-                                    tabletValue: 14,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          trailing: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              IconButton(
-                                onPressed: () {
-                                  bottomSheetParticipant(
-                                    context: context,
-                                    vicariat: widget.vicariat,
-                                    participant: participant,
-                                  );
-                                },
-                                icon: const Icon(Icons.edit),
-                              ),
-                              IconButton(
-                                onPressed: () {
-                                  customShowDialog(
-                                    context: context,
-                                    title: 'Suppression',
-                                    description:
-                                        'Voulez-vous vraiment supprimer ce participant ?',
-                                    yesText: 'Oui',
-                                    noText: 'Non',
-                                    onTap: () {
-                                      BlocProvider.of<ParticipantBloc>(
-                                        context,
-                                      ).add(
-                                        ParticipantEvent.deleteParticipant(
-                                          participant: participant,
-                                        ),
-                                      );
-                                    },
-                                  );
-                                },
-                                icon: const Icon(Icons.delete),
-                              ),
-                            ],
+                  : Column(
+                    children: [
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.5,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 5.0,
+                            ),
+                            child: ButtonWidget(
+                              onpressed: (() {
+                                bottomSheetParticipant(
+                                  context: context,
+                                  vicariat: widget.vicariat,
+                                );
+                              }),
+                              title: 'Ajouter un participant',
+                            ),
                           ),
                         ),
-                      );
-                    },
+                      ),
+                      Expanded(
+                        child:
+                            state.vicariatParticipants!.isEmpty
+                                ? EmptyWidget(text: 'Aucun participant trouvé')
+                                : ListView.builder(
+                                  shrinkWrap: true,
+                                  physics: const BouncingScrollPhysics(),
+                                  itemCount: state.vicariatParticipants!.length,
+                                  itemBuilder: (context, index) {
+                                    Participant participant =
+                                        state.vicariatParticipants![index];
+                                    return Card(
+                                      elevation: 1.0,
+                                      color: Colors.white,
+                                      child: ListTile(
+                                        leading: const Icon(Icons.person),
+                                        title: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              '${participant.identifiant}',
+                                              style: TextStyle(
+                                                color: AppColors.primary,
+                                                fontSize: AppSize.getSize(
+                                                  context: context,
+                                                  mobileValue: 12,
+                                                  tabletValue: 14,
+                                                ),
+                                              ),
+                                            ),
+                                            Text(
+                                              '${participant.nom} ${participant.prenom}',
+                                              style: TextStyle(
+                                                fontSize: AppSize.getSize(
+                                                  context: context,
+                                                  mobileValue: 14,
+                                                  tabletValue: 16,
+                                                ),
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                            Text(
+                                              '${participant.titre}',
+                                              style: TextStyle(
+                                                fontSize: AppSize.getSize(
+                                                  context: context,
+                                                  mobileValue: 12,
+                                                  tabletValue: 14,
+                                                ),
+                                              ),
+                                            ),
+                                            Text(
+                                              '${participant.paroisse}',
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: AppSize.getSize(
+                                                  context: context,
+                                                  mobileValue: 12,
+                                                  tabletValue: 14,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        trailing: Row(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            IconButton(
+                                              onPressed: () {
+                                                bottomSheetParticipant(
+                                                  context: context,
+                                                  vicariat: widget.vicariat,
+                                                  participant: participant,
+                                                );
+                                              },
+                                              icon: const Icon(Icons.edit),
+                                            ),
+                                            IconButton(
+                                              onPressed: () {
+                                                customShowDialog(
+                                                  context: context,
+                                                  title: 'Suppression',
+                                                  description:
+                                                      'Voulez-vous vraiment supprimer ce participant ?',
+                                                  yesText: 'Oui',
+                                                  noText: 'Non',
+                                                  onTap: () {
+                                                    BlocProvider.of<
+                                                      ParticipantBloc
+                                                    >(context).add(
+                                                      ParticipantEvent.deleteParticipant(
+                                                        participant:
+                                                            participant,
+                                                      ),
+                                                    );
+                                                  },
+                                                );
+                                              },
+                                              icon: const Icon(Icons.delete),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                ),
+                      ),
+                    ],
                   ),
         );
       },

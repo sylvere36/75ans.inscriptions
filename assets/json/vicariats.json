@@ -187,5 +187,13 @@
       { "name": "Saint Pierre Claver Koundokpoé" },
       { "name": "Saint Jean-Baptiste Sèdjè Dénou" }
     ]
+  },
+  {
+    "authCode": 7522,
+    "identificationCode": "75TST",
+    "vicariat": "Vicariat Forain de Test",
+    "paroisses": [
+      { "name": "Saint Sylvère" }
+    ]
   }
 ]

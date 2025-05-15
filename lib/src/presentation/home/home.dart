@@ -7,15 +7,13 @@ import 'package:madeb75/src/application/atelier/atelier_bloc.dart';
 import 'package:madeb75/src/application/participant/participant_bloc.dart';
 import 'package:madeb75/src/domain/vicariats/models/vicariat.dart';
 import 'package:madeb75/src/infrastructure/_commons/network/user_session.dart';
+import 'package:madeb75/src/presentation/_commons/route/app_router.gr.dart';
 import 'package:madeb75/src/presentation/_commons/theming/app_color.dart';
 import 'package:madeb75/src/presentation/_commons/theming/app_size.dart';
 import 'package:madeb75/src/presentation/_commons_widgets/loading_widget.dart';
 import 'package:madeb75/src/presentation/home/pages/achat_pagne_widget.dart';
 import 'package:madeb75/src/presentation/home/pages/atelier_widget.dart';
 import 'package:madeb75/src/presentation/home/pages/participants_widget.dart';
-import 'package:madeb75/src/presentation/home/sheets/bottom_sheet_achat_pagne.dart';
-import 'package:madeb75/src/presentation/home/sheets/bottom_sheet_atelier.dart';
-import 'package:madeb75/src/presentation/home/sheets/bottom_sheet_participant.dart';
 
 @RoutePage()
 class HomePage extends StatefulWidget {
@@ -83,6 +81,15 @@ class _HomePageState extends State<HomePage> {
           ),
           centerTitle: true,
           elevation: 1.0,
+          actions: [
+            IconButton(
+              onPressed: () {
+                UserSession().deleteVicariat();
+                context.router.replaceAll([LoginRoute()]);
+              },
+              icon: const Icon(Icons.logout),
+            ),
+          ],
           bottom: TabBar(
             indicatorColor: Colors.black,
             labelColor: Colors.black,
@@ -135,31 +142,6 @@ class _HomePageState extends State<HomePage> {
                 ? Center(child: LoadingWidget())
                 : AteliersWidget(vicariat: currentVicariat!),
           ],
-        ),
-
-        floatingActionButton: FloatingActionButton.extended(
-          onPressed: () {
-            if (currentVicariat == null) return;
-            if (currentIndex == 0) {
-              bottomSheetParticipant(
-                context: context,
-                vicariat: currentVicariat!,
-              );
-            }
-            if (currentIndex == 1) {
-              bottomSheetAchatPagne(
-                context: context,
-                vicariat: currentVicariat!,
-              );
-            }
-            if (currentIndex == 2) {
-              bottomSheetAtelier(context: context, vicariat: currentVicariat!);
-            }
-          },
-          backgroundColor: AppColors.primary,
-          foregroundColor: Colors.white,
-          icon: const Icon(Icons.add),
-          label: const Text('Ajouter'),
         ),
       ),
     );

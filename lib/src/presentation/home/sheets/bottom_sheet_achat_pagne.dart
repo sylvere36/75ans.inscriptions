@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -7,6 +5,7 @@ import 'package:madeb75/src/application/achat_pagne/achat_pagne_bloc.dart';
 import 'package:madeb75/src/domain/achat_pagne/models/achat_pagne.dart';
 import 'package:madeb75/src/domain/vicariats/models/vicariat.dart';
 import 'package:madeb75/src/presentation/_commons/constance/app_constance.dart';
+import 'package:madeb75/src/presentation/_commons/helpers/unique_identifiant.dart';
 import 'package:madeb75/src/presentation/_commons/theming/app_size.dart';
 import 'package:madeb75/src/presentation/_commons_widgets/app_decoration.dart';
 import 'package:madeb75/src/presentation/_commons_widgets/button_widget.dart';
@@ -70,12 +69,17 @@ class _AddEditAchatPagneWidgetState extends State<AddEditAchatPagneWidget> {
               )
               .length +
           1;
-      String codeSuffix = count.toString().padLeft(3, '0');
-      String identifiant = '${widget.vicariat.identificationCode}$codeSuffix';
-      log('Identifiant: $identifiant');
+      String identifiant = generateUniqueIdentitant(
+        identifiants:
+            BlocProvider.of<AchatPagneBloc>(context).state.vicariatAchatPagnes!
+                .map((e) => e.identifiant ?? '')
+                .toList(),
+        count: count,
+        identificationCode: widget.vicariat.identificationCode!,
+      );
       setState(() {
         achatPagne = AchatPagne(
-          identifiant: '${widget.vicariat.identificationCode}$codeSuffix',
+          identifiant: identifiant,
           vicariat: widget.vicariat.vicariat,
           vicariatCode: widget.vicariat.authCode.toString(),
           createdAt: DateTime.now(),
@@ -119,7 +123,7 @@ class _AddEditAchatPagneWidgetState extends State<AddEditAchatPagneWidget> {
                       ),
                     ),
                     Text(
-                      '${widget.achatPagne != null ? 'Modifier' : 'Ajouter'} un achatPagne',
+                      '${widget.achatPagne != null ? 'Modifier' : 'Ajouter'} un achat',
                       style: TextStyle(
                         fontSize: AppSize.getSize(
                           context: context,

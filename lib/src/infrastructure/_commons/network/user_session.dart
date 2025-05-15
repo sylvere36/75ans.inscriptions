@@ -80,6 +80,11 @@ class UserSession {
     return vicariat;
   }
 
+  Future<bool?> deleteVicariat() async {
+    preferences = preferences ?? await SharedPreferences.getInstance();
+    return await preferences?.remove(madebVicariat);
+  }
+
   Future<bool?> logout() async {
     preferences = preferences ?? await SharedPreferences.getInstance();
     return await preferences?.clear();
