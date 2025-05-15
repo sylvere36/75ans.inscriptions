@@ -40,6 +40,8 @@ class _HomePageState extends State<HomePage> {
       setState(() {
         currentVicariat = vic;
       });
+    } else {
+      AutoRouter.of(context).replaceAll([LoginRoute()]);
     }
   }
 
