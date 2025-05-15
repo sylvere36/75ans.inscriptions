@@ -41,6 +41,7 @@ class _HomePageState extends State<HomePage> {
         currentVicariat = vic;
       });
     } else {
+      // ignore: use_build_context_synchronously
       AutoRouter.of(context).replaceAll([LoginRoute()]);
     }
   }
