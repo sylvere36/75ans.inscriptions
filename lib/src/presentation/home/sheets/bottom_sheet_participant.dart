@@ -164,7 +164,7 @@ class _AddEditParticipantWidgetState extends State<AddEditParticipantWidget> {
                     hintText: 'Ex: Bossou',
                     context: context,
                   ),
-                  keyboardType: TextInputType.number,
+                  keyboardType: TextInputType.text,
                   onChanged: (value) {
                     setState(() {
                       nomController.text = value ?? '';
@@ -204,7 +204,7 @@ class _AddEditParticipantWidgetState extends State<AddEditParticipantWidget> {
                     hintText: 'Ex: Paul',
                     context: context,
                   ),
-                  keyboardType: TextInputType.number,
+                  keyboardType: TextInputType.text,
                   onChanged: (value) {
                     setState(() {
                       prenomController.text = value ?? '';
