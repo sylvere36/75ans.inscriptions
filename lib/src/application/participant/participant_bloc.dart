@@ -1,11 +1,15 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:madeb75/gen/assets.gen.dart';
 import 'package:madeb75/src/domain/_commons/global_failure.dart';
 import 'package:madeb75/src/domain/participant/i_participant_repository.dart';
 import 'package:madeb75/src/domain/participant/models/participant.dart';
+import 'package:madeb75/src/domain/vicariats/models/vicariat.dart';
 
 part 'participant_event.dart';
 part 'participant_state.dart';
@@ -23,6 +27,20 @@ class ParticipantBloc extends Bloc<ParticipantEvent, ParticipantState> {
     on<UpdateParticipant>(updateParticipant);
     on<DeleteAllParticipants>(deleteAllParticipants);
     on<GetAllParticipantsByVicariat>(getAllParticipantsByVicariat);
+    on<LoadVicariats>(loadVicariats);
+  }
+
+  void loadVicariats(
+    LoadVicariats event,
+    Emitter<ParticipantState> emit,
+  ) async {
+    final String response = await rootBundle.loadString(Assets.json.vicariats);
+    final List<dynamic> data = jsonDecode(response);
+
+    List<Vicariat> vicariats =
+        data.map((item) => Vicariat.fromMap(item)).toList();
+
+    emit(state.copyWith(vicariats: vicariats, isSubmitable: true));
   }
 
   void getAllParticipants(
@@ -42,6 +60,7 @@ class ParticipantBloc extends Bloc<ParticipantEvent, ParticipantState> {
         );
       },
       (participants) {
+        add(LoadVicariats());
         emit(
           state.copyWith(
             isLoading: false,

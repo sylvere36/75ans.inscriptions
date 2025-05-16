@@ -469,9 +469,41 @@ String toString() {
 
 
 /// @nodoc
+
+
+class LoadVicariats implements ParticipantEvent {
+  const LoadVicariats();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LoadVicariats);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'ParticipantEvent.loadVicariats()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
 mixin _$ParticipantState {
 
- List<Participant>? get participants; List<Participant>? get vicariatParticipants; bool get showErrorMessages; bool get isLoading; bool get isSubmitable; Participant? get currentParticipant; String? get verificationId; ParticipantAction? get action; Option<Either<GlobalFailure, Unit>> get failureOrSuccessOption;
+ List<Participant>? get participants; List<Participant>? get vicariatParticipants; bool get showErrorMessages; bool get isLoading; bool get isSubmitable; Participant? get currentParticipant; String? get verificationId; ParticipantAction? get action; List<Vicariat>? get vicariats; Option<Either<GlobalFailure, Unit>> get failureOrSuccessOption;
 /// Create a copy of ParticipantState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -482,16 +514,16 @@ $ParticipantStateCopyWith<ParticipantState> get copyWith => _$ParticipantStateCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ParticipantState&&const DeepCollectionEquality().equals(other.participants, participants)&&const DeepCollectionEquality().equals(other.vicariatParticipants, vicariatParticipants)&&(identical(other.showErrorMessages, showErrorMessages) || other.showErrorMessages == showErrorMessages)&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.isSubmitable, isSubmitable) || other.isSubmitable == isSubmitable)&&(identical(other.currentParticipant, currentParticipant) || other.currentParticipant == currentParticipant)&&(identical(other.verificationId, verificationId) || other.verificationId == verificationId)&&(identical(other.action, action) || other.action == action)&&(identical(other.failureOrSuccessOption, failureOrSuccessOption) || other.failureOrSuccessOption == failureOrSuccessOption));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ParticipantState&&const DeepCollectionEquality().equals(other.participants, participants)&&const DeepCollectionEquality().equals(other.vicariatParticipants, vicariatParticipants)&&(identical(other.showErrorMessages, showErrorMessages) || other.showErrorMessages == showErrorMessages)&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.isSubmitable, isSubmitable) || other.isSubmitable == isSubmitable)&&(identical(other.currentParticipant, currentParticipant) || other.currentParticipant == currentParticipant)&&(identical(other.verificationId, verificationId) || other.verificationId == verificationId)&&(identical(other.action, action) || other.action == action)&&const DeepCollectionEquality().equals(other.vicariats, vicariats)&&(identical(other.failureOrSuccessOption, failureOrSuccessOption) || other.failureOrSuccessOption == failureOrSuccessOption));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(participants),const DeepCollectionEquality().hash(vicariatParticipants),showErrorMessages,isLoading,isSubmitable,currentParticipant,verificationId,action,failureOrSuccessOption);
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(participants),const DeepCollectionEquality().hash(vicariatParticipants),showErrorMessages,isLoading,isSubmitable,currentParticipant,verificationId,action,const DeepCollectionEquality().hash(vicariats),failureOrSuccessOption);
 
 @override
 String toString() {
-  return 'ParticipantState(participants: $participants, vicariatParticipants: $vicariatParticipants, showErrorMessages: $showErrorMessages, isLoading: $isLoading, isSubmitable: $isSubmitable, currentParticipant: $currentParticipant, verificationId: $verificationId, action: $action, failureOrSuccessOption: $failureOrSuccessOption)';
+  return 'ParticipantState(participants: $participants, vicariatParticipants: $vicariatParticipants, showErrorMessages: $showErrorMessages, isLoading: $isLoading, isSubmitable: $isSubmitable, currentParticipant: $currentParticipant, verificationId: $verificationId, action: $action, vicariats: $vicariats, failureOrSuccessOption: $failureOrSuccessOption)';
 }
 
 
@@ -502,7 +534,7 @@ abstract mixin class $ParticipantStateCopyWith<$Res>  {
   factory $ParticipantStateCopyWith(ParticipantState value, $Res Function(ParticipantState) _then) = _$ParticipantStateCopyWithImpl;
 @useResult
 $Res call({
- List<Participant>? participants, List<Participant>? vicariatParticipants, bool showErrorMessages, bool isLoading, bool isSubmitable, Participant? currentParticipant, String? verificationId, ParticipantAction? action, Option<Either<GlobalFailure, Unit>> failureOrSuccessOption
+ List<Participant>? participants, List<Participant>? vicariatParticipants, bool showErrorMessages, bool isLoading, bool isSubmitable, Participant? currentParticipant, String? verificationId, ParticipantAction? action, List<Vicariat>? vicariats, Option<Either<GlobalFailure, Unit>> failureOrSuccessOption
 });
 
 
@@ -519,7 +551,7 @@ class _$ParticipantStateCopyWithImpl<$Res>
 
 /// Create a copy of ParticipantState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? participants = freezed,Object? vicariatParticipants = freezed,Object? showErrorMessages = null,Object? isLoading = null,Object? isSubmitable = null,Object? currentParticipant = freezed,Object? verificationId = freezed,Object? action = freezed,Object? failureOrSuccessOption = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? participants = freezed,Object? vicariatParticipants = freezed,Object? showErrorMessages = null,Object? isLoading = null,Object? isSubmitable = null,Object? currentParticipant = freezed,Object? verificationId = freezed,Object? action = freezed,Object? vicariats = freezed,Object? failureOrSuccessOption = null,}) {
   return _then(_self.copyWith(
 participants: freezed == participants ? _self.participants : participants // ignore: cast_nullable_to_non_nullable
 as List<Participant>?,vicariatParticipants: freezed == vicariatParticipants ? _self.vicariatParticipants : vicariatParticipants // ignore: cast_nullable_to_non_nullable
@@ -529,7 +561,8 @@ as bool,isSubmitable: null == isSubmitable ? _self.isSubmitable : isSubmitable /
 as bool,currentParticipant: freezed == currentParticipant ? _self.currentParticipant : currentParticipant // ignore: cast_nullable_to_non_nullable
 as Participant?,verificationId: freezed == verificationId ? _self.verificationId : verificationId // ignore: cast_nullable_to_non_nullable
 as String?,action: freezed == action ? _self.action : action // ignore: cast_nullable_to_non_nullable
-as ParticipantAction?,failureOrSuccessOption: null == failureOrSuccessOption ? _self.failureOrSuccessOption : failureOrSuccessOption // ignore: cast_nullable_to_non_nullable
+as ParticipantAction?,vicariats: freezed == vicariats ? _self.vicariats : vicariats // ignore: cast_nullable_to_non_nullable
+as List<Vicariat>?,failureOrSuccessOption: null == failureOrSuccessOption ? _self.failureOrSuccessOption : failureOrSuccessOption // ignore: cast_nullable_to_non_nullable
 as Option<Either<GlobalFailure, Unit>>,
   ));
 }
@@ -541,7 +574,7 @@ as Option<Either<GlobalFailure, Unit>>,
 
 
 class _ParticipantState implements ParticipantState {
-  const _ParticipantState({required final  List<Participant>? participants, required final  List<Participant>? vicariatParticipants, required this.showErrorMessages, required this.isLoading, required this.isSubmitable, this.currentParticipant, required this.verificationId, this.action, required this.failureOrSuccessOption}): _participants = participants,_vicariatParticipants = vicariatParticipants;
+  const _ParticipantState({required final  List<Participant>? participants, required final  List<Participant>? vicariatParticipants, required this.showErrorMessages, required this.isLoading, required this.isSubmitable, this.currentParticipant, required this.verificationId, this.action, final  List<Vicariat>? vicariats, required this.failureOrSuccessOption}): _participants = participants,_vicariatParticipants = vicariatParticipants,_vicariats = vicariats;
   
 
  final  List<Participant>? _participants;
@@ -568,6 +601,15 @@ class _ParticipantState implements ParticipantState {
 @override final  Participant? currentParticipant;
 @override final  String? verificationId;
 @override final  ParticipantAction? action;
+ final  List<Vicariat>? _vicariats;
+@override List<Vicariat>? get vicariats {
+  final value = _vicariats;
+  if (value == null) return null;
+  if (_vicariats is EqualUnmodifiableListView) return _vicariats;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(value);
+}
+
 @override final  Option<Either<GlobalFailure, Unit>> failureOrSuccessOption;
 
 /// Create a copy of ParticipantState
@@ -580,16 +622,16 @@ _$ParticipantStateCopyWith<_ParticipantState> get copyWith => __$ParticipantStat
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ParticipantState&&const DeepCollectionEquality().equals(other._participants, _participants)&&const DeepCollectionEquality().equals(other._vicariatParticipants, _vicariatParticipants)&&(identical(other.showErrorMessages, showErrorMessages) || other.showErrorMessages == showErrorMessages)&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.isSubmitable, isSubmitable) || other.isSubmitable == isSubmitable)&&(identical(other.currentParticipant, currentParticipant) || other.currentParticipant == currentParticipant)&&(identical(other.verificationId, verificationId) || other.verificationId == verificationId)&&(identical(other.action, action) || other.action == action)&&(identical(other.failureOrSuccessOption, failureOrSuccessOption) || other.failureOrSuccessOption == failureOrSuccessOption));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ParticipantState&&const DeepCollectionEquality().equals(other._participants, _participants)&&const DeepCollectionEquality().equals(other._vicariatParticipants, _vicariatParticipants)&&(identical(other.showErrorMessages, showErrorMessages) || other.showErrorMessages == showErrorMessages)&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.isSubmitable, isSubmitable) || other.isSubmitable == isSubmitable)&&(identical(other.currentParticipant, currentParticipant) || other.currentParticipant == currentParticipant)&&(identical(other.verificationId, verificationId) || other.verificationId == verificationId)&&(identical(other.action, action) || other.action == action)&&const DeepCollectionEquality().equals(other._vicariats, _vicariats)&&(identical(other.failureOrSuccessOption, failureOrSuccessOption) || other.failureOrSuccessOption == failureOrSuccessOption));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_participants),const DeepCollectionEquality().hash(_vicariatParticipants),showErrorMessages,isLoading,isSubmitable,currentParticipant,verificationId,action,failureOrSuccessOption);
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_participants),const DeepCollectionEquality().hash(_vicariatParticipants),showErrorMessages,isLoading,isSubmitable,currentParticipant,verificationId,action,const DeepCollectionEquality().hash(_vicariats),failureOrSuccessOption);
 
 @override
 String toString() {
-  return 'ParticipantState(participants: $participants, vicariatParticipants: $vicariatParticipants, showErrorMessages: $showErrorMessages, isLoading: $isLoading, isSubmitable: $isSubmitable, currentParticipant: $currentParticipant, verificationId: $verificationId, action: $action, failureOrSuccessOption: $failureOrSuccessOption)';
+  return 'ParticipantState(participants: $participants, vicariatParticipants: $vicariatParticipants, showErrorMessages: $showErrorMessages, isLoading: $isLoading, isSubmitable: $isSubmitable, currentParticipant: $currentParticipant, verificationId: $verificationId, action: $action, vicariats: $vicariats, failureOrSuccessOption: $failureOrSuccessOption)';
 }
 
 
@@ -600,7 +642,7 @@ abstract mixin class _$ParticipantStateCopyWith<$Res> implements $ParticipantSta
   factory _$ParticipantStateCopyWith(_ParticipantState value, $Res Function(_ParticipantState) _then) = __$ParticipantStateCopyWithImpl;
 @override @useResult
 $Res call({
- List<Participant>? participants, List<Participant>? vicariatParticipants, bool showErrorMessages, bool isLoading, bool isSubmitable, Participant? currentParticipant, String? verificationId, ParticipantAction? action, Option<Either<GlobalFailure, Unit>> failureOrSuccessOption
+ List<Participant>? participants, List<Participant>? vicariatParticipants, bool showErrorMessages, bool isLoading, bool isSubmitable, Participant? currentParticipant, String? verificationId, ParticipantAction? action, List<Vicariat>? vicariats, Option<Either<GlobalFailure, Unit>> failureOrSuccessOption
 });
 
 
@@ -617,7 +659,7 @@ class __$ParticipantStateCopyWithImpl<$Res>
 
 /// Create a copy of ParticipantState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? participants = freezed,Object? vicariatParticipants = freezed,Object? showErrorMessages = null,Object? isLoading = null,Object? isSubmitable = null,Object? currentParticipant = freezed,Object? verificationId = freezed,Object? action = freezed,Object? failureOrSuccessOption = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? participants = freezed,Object? vicariatParticipants = freezed,Object? showErrorMessages = null,Object? isLoading = null,Object? isSubmitable = null,Object? currentParticipant = freezed,Object? verificationId = freezed,Object? action = freezed,Object? vicariats = freezed,Object? failureOrSuccessOption = null,}) {
   return _then(_ParticipantState(
 participants: freezed == participants ? _self._participants : participants // ignore: cast_nullable_to_non_nullable
 as List<Participant>?,vicariatParticipants: freezed == vicariatParticipants ? _self._vicariatParticipants : vicariatParticipants // ignore: cast_nullable_to_non_nullable
@@ -627,7 +669,8 @@ as bool,isSubmitable: null == isSubmitable ? _self.isSubmitable : isSubmitable /
 as bool,currentParticipant: freezed == currentParticipant ? _self.currentParticipant : currentParticipant // ignore: cast_nullable_to_non_nullable
 as Participant?,verificationId: freezed == verificationId ? _self.verificationId : verificationId // ignore: cast_nullable_to_non_nullable
 as String?,action: freezed == action ? _self.action : action // ignore: cast_nullable_to_non_nullable
-as ParticipantAction?,failureOrSuccessOption: null == failureOrSuccessOption ? _self.failureOrSuccessOption : failureOrSuccessOption // ignore: cast_nullable_to_non_nullable
+as ParticipantAction?,vicariats: freezed == vicariats ? _self._vicariats : vicariats // ignore: cast_nullable_to_non_nullable
+as List<Vicariat>?,failureOrSuccessOption: null == failureOrSuccessOption ? _self.failureOrSuccessOption : failureOrSuccessOption // ignore: cast_nullable_to_non_nullable
 as Option<Either<GlobalFailure, Unit>>,
   ));
 }

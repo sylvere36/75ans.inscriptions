@@ -93,237 +93,242 @@ class _AddEditAtelierWidgetState extends State<AddEditAtelierWidget> {
             bottom: MediaQuery.of(context).viewInsets.bottom,
           ),
           color: Colors.white,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Align(
-                alignment: Alignment.center,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 10.0),
-                      child: SizedBox(
-                        width: 100,
-                        height: 10,
-                        child: Material(
-                          color: Colors.grey[400],
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 8.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Align(
+                    alignment: Alignment.center,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10.0),
+                          child: SizedBox(
+                            width: 100,
+                            height: 10,
+                            child: Material(
+                              color: Colors.grey[400],
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: const Text(''),
+                            ),
                           ),
-                          child: const Text(''),
                         ),
-                      ),
+                        Text(
+                          '${widget.atelier != null ? 'Modifier' : 'Ajouter'} un enfant',
+                          style: TextStyle(
+                            fontSize: AppSize.getSize(
+                              context: context,
+                              mobileValue: 18,
+                              tabletValue: 22,
+                            ),
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
                     ),
-                    Text(
-                      '${widget.atelier != null ? 'Modifier' : 'Ajouter'} un enfant',
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    child: Text(
+                      'Nom : ',
                       style: TextStyle(
                         fontSize: AppSize.getSize(
                           context: context,
-                          mobileValue: 18,
-                          tabletValue: 22,
+                          mobileValue: 14,
+                          tabletValue: 16,
                         ),
                         fontWeight: FontWeight.w600,
                       ),
                     ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8),
-                child: Text(
-                  'Nom : ',
-                  style: TextStyle(
-                    fontSize: AppSize.getSize(
-                      context: context,
-                      mobileValue: 14,
-                      tabletValue: 16,
-                    ),
-                    fontWeight: FontWeight.w600,
                   ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: FormBuilderTextField(
-                  name: 'nom',
-                  initialValue: widget.atelier?.nom,
-                  decoration: appInputDecoration(
-                    hintText: 'Ex: Bossou',
-                    context: context,
-                  ),
-                  keyboardType: TextInputType.text,
-                  onChanged: (value) {
-                    setState(() {
-                      nomController.text = value ?? '';
-                      atelier.nom = value;
-                    });
-                  },
-                  style: TextStyle(
-                    fontSize: AppSize.getSize(
-                      context: context,
-                      mobileValue: 14,
-                      tabletValue: 17,
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: FormBuilderTextField(
+                      name: 'nom',
+                      initialValue: widget.atelier?.nom,
+                      decoration: appInputDecoration(
+                        hintText: 'Ex: Bossou',
+                        context: context,
+                      ),
+                      keyboardType: TextInputType.text,
+                      onChanged: (value) {
+                        setState(() {
+                          nomController.text = value ?? '';
+                          atelier.nom = value;
+                        });
+                      },
+                      style: TextStyle(
+                        fontSize: AppSize.getSize(
+                          context: context,
+                          mobileValue: 14,
+                          tabletValue: 17,
+                        ),
+                      ),
+                      obscureText: false,
                     ),
                   ),
-                  obscureText: false,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8),
-                child: Text(
-                  'Prénom(s) : ',
-                  style: TextStyle(
-                    fontSize: AppSize.getSize(
-                      context: context,
-                      mobileValue: 14,
-                      tabletValue: 16,
-                    ),
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: FormBuilderTextField(
-                  name: 'prenom',
-                  initialValue: widget.atelier?.prenom,
-                  decoration: appInputDecoration(
-                    hintText: 'Ex: Paul',
-                    context: context,
-                  ),
-                  keyboardType: TextInputType.text,
-                  onChanged: (value) {
-                    setState(() {
-                      prenomController.text = value ?? '';
-                      atelier.prenom = value;
-                    });
-                  },
-                  style: TextStyle(
-                    fontSize: AppSize.getSize(
-                      context: context,
-                      mobileValue: 14,
-                      tabletValue: 17,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    child: Text(
+                      'Prénom(s) : ',
+                      style: TextStyle(
+                        fontSize: AppSize.getSize(
+                          context: context,
+                          mobileValue: 14,
+                          tabletValue: 16,
+                        ),
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
-                  obscureText: false,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8),
-                child: Text(
-                  'Paroisse(s) : ',
-                  style: TextStyle(
-                    fontSize: AppSize.getSize(
-                      context: context,
-                      mobileValue: 14,
-                      tabletValue: 16,
-                    ),
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: FormBuilderDropdown<String>(
-                  name: 'paroisse',
-                  initialValue: widget.atelier?.paroisse,
-                  decoration: appInputDecoration(
-                    hintText: 'Paroisse',
-                    context: context,
-                  ),
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: AppSize.getSize(
-                      context: context,
-                      mobileValue: 14,
-                      tabletValue: 17,
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: FormBuilderTextField(
+                      name: 'prenom',
+                      initialValue: widget.atelier?.prenom,
+                      decoration: appInputDecoration(
+                        hintText: 'Ex: Paul',
+                        context: context,
+                      ),
+                      keyboardType: TextInputType.text,
+                      onChanged: (value) {
+                        setState(() {
+                          prenomController.text = value ?? '';
+                          atelier.prenom = value;
+                        });
+                      },
+                      style: TextStyle(
+                        fontSize: AppSize.getSize(
+                          context: context,
+                          mobileValue: 14,
+                          tabletValue: 17,
+                        ),
+                      ),
+                      obscureText: false,
                     ),
                   ),
-                  onChanged: (value) {
-                    setState(() {
-                      paroisseController.text = value ?? '';
-                      atelier.paroisse = value;
-                    });
-                  },
-                  items:
-                      widget.vicariat.paroisses?.map((e) {
-                        return DropdownMenuItem(
-                          value: e.name,
-                          child: Text(e.name ?? ''),
-                        );
-                      }).toList() ??
-                      [],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8),
-                child: Text(
-                  'Titre/Légion : ',
-                  style: TextStyle(
-                    fontSize: AppSize.getSize(
-                      context: context,
-                      mobileValue: 14,
-                      tabletValue: 16,
-                    ),
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: FormBuilderDropdown<String>(
-                  name: 'titre',
-                  initialValue: widget.atelier?.titre,
-                  decoration: appInputDecoration(
-                    hintText: 'Titre',
-                    context: context,
-                  ),
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: AppSize.getSize(
-                      context: context,
-                      mobileValue: 14,
-                      tabletValue: 17,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    child: Text(
+                      'Paroisse(s) : ',
+                      style: TextStyle(
+                        fontSize: AppSize.getSize(
+                          context: context,
+                          mobileValue: 14,
+                          tabletValue: 16,
+                        ),
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
-                  onChanged: (value) {
-                    setState(() {
-                      titreController.text = value ?? '';
-                      atelier.titre = value;
-                    });
-                  },
-                  items:
-                      deuxfirstLegion.map((e) {
-                        return DropdownMenuItem(value: e, child: Text(e));
-                      }).toList(),
-                ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: FormBuilderDropdown<String>(
+                      name: 'paroisse',
+                      initialValue: widget.atelier?.paroisse,
+                      decoration: appInputDecoration(
+                        hintText: 'Paroisse',
+                        context: context,
+                      ),
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: AppSize.getSize(
+                          context: context,
+                          mobileValue: 14,
+                          tabletValue: 17,
+                        ),
+                      ),
+                      onChanged: (value) {
+                        setState(() {
+                          paroisseController.text = value ?? '';
+                          atelier.paroisse = value;
+                        });
+                      },
+                      items:
+                          widget.vicariat.paroisses?.map((e) {
+                            return DropdownMenuItem(
+                              value: e.name,
+                              child: Text(e.name ?? ''),
+                            );
+                          }).toList() ??
+                          [],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    child: Text(
+                      'Titre/Légion : ',
+                      style: TextStyle(
+                        fontSize: AppSize.getSize(
+                          context: context,
+                          mobileValue: 14,
+                          tabletValue: 16,
+                        ),
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: FormBuilderDropdown<String>(
+                      name: 'titre',
+                      initialValue: widget.atelier?.titre,
+                      decoration: appInputDecoration(
+                        hintText: 'Titre',
+                        context: context,
+                      ),
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: AppSize.getSize(
+                          context: context,
+                          mobileValue: 14,
+                          tabletValue: 17,
+                        ),
+                      ),
+                      onChanged: (value) {
+                        setState(() {
+                          titreController.text = value ?? '';
+                          atelier.titre = value;
+                        });
+                      },
+                      items:
+                          deuxfirstLegion.map((e) {
+                            return DropdownMenuItem(value: e, child: Text(e));
+                          }).toList(),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: ButtonWidget(
+                      onpressed:
+                          atelier.isValid()
+                              ? (() {
+                                if (widget.atelier == null) {
+                                  context.read<AtelierBloc>().add(
+                                    SaveAtelier(atelier: atelier),
+                                  );
+                                } else {
+                                  context.read<AtelierBloc>().add(
+                                    UpdateAtelier(atelier: atelier),
+                                  );
+                                }
+                              })
+                              : null,
+                      title: widget.atelier != null ? 'Modifier' : 'Ajouter',
+                      loading: state.isLoading,
+                      textColor: Colors.white,
+                    ),
+                  ),
+                ],
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: ButtonWidget(
-                  onpressed:
-                      atelier.isValid()
-                          ? (() {
-                            if (widget.atelier == null) {
-                              context.read<AtelierBloc>().add(
-                                SaveAtelier(atelier: atelier),
-                              );
-                            } else {
-                              context.read<AtelierBloc>().add(
-                                UpdateAtelier(atelier: atelier),
-                              );
-                            }
-                          })
-                          : null,
-                  title: widget.atelier != null ? 'Modifier' : 'Ajouter',
-                  loading: state.isLoading,
-                  textColor: Colors.white,
-                ),
-              ),
-            ],
+            ),
           ),
         );
       },

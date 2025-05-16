@@ -13,6 +13,7 @@ abstract class ParticipantState with _$ParticipantState {
     Participant? currentParticipant,
     required String? verificationId,
     ParticipantAction? action,
+    List<Vicariat>? vicariats,
     required Option<Either<GlobalFailure, Unit>> failureOrSuccessOption,
   }) = _ParticipantState;
 
@@ -24,6 +25,7 @@ abstract class ParticipantState with _$ParticipantState {
     currentParticipant: null,
     failureOrSuccessOption: none(),
     participants: null,
+    vicariats: null,
     vicariatParticipants: null,
   );
 }

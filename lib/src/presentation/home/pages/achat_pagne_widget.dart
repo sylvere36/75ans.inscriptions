@@ -12,6 +12,16 @@ import 'package:madeb75/src/presentation/_commons_widgets/loading_widget.dart';
 import 'package:madeb75/src/presentation/_commons_widgets/my_toast.dart';
 import 'package:madeb75/src/presentation/home/sheets/bottom_sheet_achat_pagne.dart';
 
+int getTotalMetre(List<AchatPagne> vicariatAchatPagnes) {
+  if (vicariatAchatPagnes.isEmpty) {
+    return 0;
+  }
+  return vicariatAchatPagnes.fold(
+    0,
+    (sum, item) => sum + (item.nombrePagne ?? 0),
+  );
+}
+
 class AchatPagnesWidget extends StatefulWidget {
   final Vicariat vicariat;
   const AchatPagnesWidget({super.key, required this.vicariat});
@@ -28,16 +38,6 @@ class _AchatPagnesWidgetState extends State<AchatPagnesWidget> {
       AchatPagneEvent.getAllAchatPagnesByVicariat(
         vicariatCode: widget.vicariat.authCode.toString(),
       ),
-    );
-  }
-
-  int getTotalMetre(List<AchatPagne> vicariatAchatPagnes) {
-    if (vicariatAchatPagnes.isEmpty) {
-      return 0;
-    }
-    return vicariatAchatPagnes.fold(
-      0,
-      (sum, item) => sum + (item.nombrePagne ?? 0),
     );
   }
 

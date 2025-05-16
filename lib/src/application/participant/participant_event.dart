@@ -20,4 +20,6 @@ class ParticipantEvent with _$ParticipantEvent {
   }) = DeleteParticipant;
   const factory ParticipantEvent.deleteAllParticipants() =
       DeleteAllParticipants;
+
+  const factory ParticipantEvent.loadVicariats() = LoadVicariats;
 }

@@ -12,6 +12,19 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart' as _svg;
 import 'package:vector_graphics/vector_graphics.dart' as _vg;
 
+class $AssetsDocxGen {
+  const $AssetsDocxGen();
+
+  /// File path: assets/docx/templateListe.docx
+  String get templateListe => 'assets/docx/templateListe.docx';
+
+  /// File path: assets/docx/templateListe1.docx
+  String get templateListe1 => 'assets/docx/templateListe1.docx';
+
+  /// List of all assets
+  List<String> get values => [templateListe, templateListe1];
+}
+
 class $AssetsEnvGen {
   const $AssetsEnvGen();
 
@@ -84,6 +97,7 @@ class $AssetsTranslationsGen {
 class Assets {
   const Assets._();
 
+  static const $AssetsDocxGen docx = $AssetsDocxGen();
   static const $AssetsEnvGen env = $AssetsEnvGen();
   static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();

@@ -92,6 +92,13 @@ class _HomePageState extends State<HomePage> {
               },
               icon: const Icon(Icons.logout),
             ),
+            if (currentVicariat != null && currentVicariat!.authCode == 7522)
+              IconButton(
+                onPressed: () {
+                  context.router.replaceAll([DashboardRoute()]);
+                },
+                icon: const Icon(Icons.dashboard),
+              ),
           ],
           bottom: TabBar(
             indicatorColor: Colors.black,

@@ -9,52 +9,69 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i4;
-import 'package:flutter/material.dart' as _i5;
-import 'package:madeb75/src/presentation/auth/sign_in/login.dart' as _i2;
-import 'package:madeb75/src/presentation/home/home.dart' as _i1;
-import 'package:madeb75/src/presentation/splash/splash.dart' as _i3;
+import 'package:auto_route/auto_route.dart' as _i5;
+import 'package:flutter/material.dart' as _i6;
+import 'package:madeb75/src/presentation/auth/sign_in/login.dart' as _i3;
+import 'package:madeb75/src/presentation/dashboard/dashboard.dart' as _i1;
+import 'package:madeb75/src/presentation/home/home.dart' as _i2;
+import 'package:madeb75/src/presentation/splash/splash.dart' as _i4;
 
 /// generated route for
-/// [_i1.HomePage]
-class HomeRoute extends _i4.PageRouteInfo<void> {
-  const HomeRoute({List<_i4.PageRouteInfo>? children})
+/// [_i1.DashboardPage]
+class DashboardRoute extends _i5.PageRouteInfo<void> {
+  const DashboardRoute({List<_i5.PageRouteInfo>? children})
+    : super(DashboardRoute.name, initialChildren: children);
+
+  static const String name = 'DashboardRoute';
+
+  static _i5.PageInfo page = _i5.PageInfo(
+    name,
+    builder: (data) {
+      return const _i1.DashboardPage();
+    },
+  );
+}
+
+/// generated route for
+/// [_i2.HomePage]
+class HomeRoute extends _i5.PageRouteInfo<void> {
+  const HomeRoute({List<_i5.PageRouteInfo>? children})
     : super(HomeRoute.name, initialChildren: children);
 
   static const String name = 'HomeRoute';
 
-  static _i4.PageInfo page = _i4.PageInfo(
+  static _i5.PageInfo page = _i5.PageInfo(
     name,
     builder: (data) {
-      return const _i1.HomePage();
+      return const _i2.HomePage();
     },
   );
 }
 
 /// generated route for
-/// [_i2.LoginPage]
-class LoginRoute extends _i4.PageRouteInfo<void> {
-  const LoginRoute({List<_i4.PageRouteInfo>? children})
+/// [_i3.LoginPage]
+class LoginRoute extends _i5.PageRouteInfo<void> {
+  const LoginRoute({List<_i5.PageRouteInfo>? children})
     : super(LoginRoute.name, initialChildren: children);
 
   static const String name = 'LoginRoute';
 
-  static _i4.PageInfo page = _i4.PageInfo(
+  static _i5.PageInfo page = _i5.PageInfo(
     name,
     builder: (data) {
-      return const _i2.LoginPage();
+      return const _i3.LoginPage();
     },
   );
 }
 
 /// generated route for
-/// [_i3.SplashPage]
-class SplashRoute extends _i4.PageRouteInfo<SplashRouteArgs> {
+/// [_i4.SplashPage]
+class SplashRoute extends _i5.PageRouteInfo<SplashRouteArgs> {
   SplashRoute({
-    _i5.Key? key,
+    _i6.Key? key,
     bool? withDeepLink,
     bool? fromLogout,
-    List<_i4.PageRouteInfo>? children,
+    List<_i5.PageRouteInfo>? children,
   }) : super(
          SplashRoute.name,
          args: SplashRouteArgs(
@@ -67,13 +84,13 @@ class SplashRoute extends _i4.PageRouteInfo<SplashRouteArgs> {
 
   static const String name = 'SplashRoute';
 
-  static _i4.PageInfo page = _i4.PageInfo(
+  static _i5.PageInfo page = _i5.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<SplashRouteArgs>(
         orElse: () => const SplashRouteArgs(),
       );
-      return _i3.SplashPage(
+      return _i4.SplashPage(
         key: args.key,
         withDeepLink: args.withDeepLink,
         fromLogout: args.fromLogout,
@@ -85,7 +102,7 @@ class SplashRoute extends _i4.PageRouteInfo<SplashRouteArgs> {
 class SplashRouteArgs {
   const SplashRouteArgs({this.key, this.withDeepLink, this.fromLogout});
 
-  final _i5.Key? key;
+  final _i6.Key? key;
 
   final bool? withDeepLink;
 
